@@ -1,5 +1,6 @@
 # fsociety
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 Fahim was here!
 Emily was here!
@@ -20,3 +21,10 @@ again
 
 Hi, again! ~Allen
 >>>>>>> bbac148c8fe3116b32a9552232c789855d060111
+=======
+
+Allen Cooper
+Emily Baumgartner
+Arceny Castillo
+Fahim Jamal
+>>>>>>> 9a91a3397af9a26897fa730e87cb1f8cc018af9c
