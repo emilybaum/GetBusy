@@ -6,13 +6,12 @@ var postalCode = "";
 var interest = "";
 
 
-
+// capture interest from form submission and feed into global variables
+    
 $("#TBDforButton").on("click", getImagesPixabay)
 
-// capture interest from form submission
-    
-    
 function getImagesPixabay(interest) {
+    event.preventDefault()
     var interest = $(this).attr("interest"); // do we need to concatenate this if multiple words?
     var API = "12697501-1309c320d0a4f2a4386273ea4";
     var queryURL = "https://pixabay.com/api/?key=" + API + "&q=" + interest + "&image_type=photo" + "&editors_choice=true" + "&page=1";
