@@ -13,8 +13,45 @@
     <title>GetBusy</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>GetBusy</h1>
 
+        <form>
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="userName-input" placeholder="Your name">
+            </div>
+            
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email-input">Email address</label>
+                <input type="email" class="form-control" id="email-input" placeholder="Enter email">
+            </div>
+            
+            <!-- Postal code -->
+            <div class="form-group">
+                <label for="postalCode">Postal Code</label>
+                <input type="number" class="form-control" id="postalCode-input" placeholder="i.e. 20194">
+                <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
+            </div>
+            
+            <!-- Interest -->
+            <div class="form-group">
+                <label for="interest">What are you interested in?</label>
+                <input type="text" class="form-control" id="interest-input" placeholder="i.e. Knitting">
+            </div>
+            
+            <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
+        </form>
+
+        <div id="TBDforWhere"></div>
+
+        <br>
+
+        <button id="loadMorePix" type="submit" class="btn btn-primary">Load More</button>
+    
+    </div>
     <script src="assets/javascript/app.js "></script>
 </body>
 </html>
