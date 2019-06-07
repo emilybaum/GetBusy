@@ -51,14 +51,19 @@ $("#showMoreImages").on("click", function (event) {
 // 
 function displayPixabay(arr) {
     var numOfImages = 4
+    imageRow = $("<div class='row'>")
+
     for (var i = 0; i < numOfImages; i++) {
-        var pixabayDiv = $("<div>")
+        var imageCol = $("<div class='col-sm'>")
+        var pixabayDiv = $("<div class='card'>")
         var image = arr[i].webformatURL;
 
-        var disaplyImage = $("<img>");
+        var disaplyImage = $("<img class='card-image-top'>");
         disaplyImage.attr("src", image)
         pixabayDiv.append(disaplyImage)
-        $("#TBDforWhere").append(pixabayDiv);  
+        imageCol.append(pixabayDiv)
+        imageRow.append(imageCol)
+        $("#TBDforWhere").append(imageRow);  
     }
     arr.splice(0, 4);
     
