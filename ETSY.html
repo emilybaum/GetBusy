@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Etsy jQuery Demo</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    var newImagesArr = [];
+
+    function displayImages(arr) {
+        imageContainer = $("#etsy-images");
+        imageRow = $("<div class='row'>");
+        for (i = 0; i < 4; i++) {
+            imageCol = $("<div>");
+            imageCard = $("<div style='width: 18em;'>")
+                imageCard.addClass("card");
+                imageCard.append("<img src=" + JSON.stringify(arr[i].Images[0].url_170x135) + ">");
+            imageCardBody = $("<div>");
+                imageCardBody.addClass("card-body");
+                    imageCardLink = $("<a>");
+                        imageCardLink.attr("href", arr[i].url);
+                            imageCardTitle = $("<h5>" + arr[i].title + "</h5>")
+                        imageCardLink.append(imageCardTitle);
+                imageCardBody.append(imageCardLink);
+                imageCardBody.append("<h6>" + arr[i].price + "</h6>");
+            imageCard.append(imageCardBody);
+            imageCol.append(imageCard);
+            imageRow.append(imageCol);
+        }
+        imageContainer.append(imageRow);
+        arr.splice(0,4);
+        newImagesArr = arr;
+        console.log(newImagesArr);
+    }
+
+    function getImages() {
+    api_key = "7u4gcw7pr0m2knv9opn4f5h6";
+    terms = "cups"
+    etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords="+
+    terms+"&limit=20&includes=Images:1&api_key="+api_key;
+
+    $.ajax({
+        url: etsyURL,
+        dataType: 'jsonp',
+        success: function(data) {
+            console.log(data);
+            newImagesArr = data.results
+            console.log(newImagesArr);
+            displayImages(newImagesArr);
+
+            // if (data.ok) {
+            //     $('#etsy-images').empty();
+            //     if (data.count > 0) {
+            //         $.each(data.results, function(i,item) {
+            //             $("<img/>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images").wrap(
+            //                 "<a href='" + item.url + "'></a>"
+            //             );
+            //             if (i%4 == 1) {
+            //                 $('<br/>').appendTo('#etsy-images');
+            //             }
+            //         });
+            //     } else {
+            //     $('<p>No results.</p>').appendTo('#etsy-images');
+            //     }
+            // } else {
+            //     $('#etsy-images').empty();
+            //     alert(data.error);
+            // }
+        }
+    });
+
+    return false;
+     };
+    getImages()
+    $("#show-more").on("click", function(event){
+        displayImages(newImagesArr);
+    })
+});
+
+
+</script>
+</head>
+<body>
+    <div id="etsy-images"></div>
+    <button id="show-more">Show more</button>
+</body>
+</html>
