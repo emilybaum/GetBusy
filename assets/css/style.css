@@ -1,1 +1,33 @@
 /* css */
+h1 {
+text-align: center;
+font-family: "Brush Script MT";
+color: rgb(252, 252, 252)
+}
+
+/* html {
+    background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+} */
+
+body, html {
+    height: 100%;
+  }
+  
+  .bg { 
+    /* The image used */
+    background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+
