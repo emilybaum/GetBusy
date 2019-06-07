@@ -1,18 +1,33 @@
-// javascript
 
-var name = "";
-var email = "";
-var postalCode = "";
-var interest = "";
+
+// User Object for data collected from user in initial form
+var userData = {
+    userName: "",
+    email: "",
+    postalCode: 0,
+    interest: "",
+}
+
+// button clikc at end of form
+$("#TBDforButton").on("click", collectUserData)
+
+// function to collect the data that is added by the user and feeds into the object
+function collectUserData() {
+    userData.userName = $("#userName-input").val().trim()
+    userData.email = $("#email-input").val().trim()
+    userData.postalCode = $("#postalCode-input").val().trim()
+    userData.interest = $("#interest-input").val().trim()
+    console.log(userData)
+}
 
 
 // capture interest from form submission and feed into global variables
     
 $("#TBDforButton").on("click", getImagesPixabay)
 
-function getImagesPixabay(interest) {
+function getImagesPixabay(userData) {
     event.preventDefault()
-    var interest = $(this).attr("interest"); // do we need to concatenate this if multiple words?
+    var interest = userData.interest; // do we need to concatenate this if multiple words?
     var API = "12697501-1309c320d0a4f2a4386273ea4";
     var queryURL = "https://pixabay.com/api/?key=" + API + "&q=" + interest + "&image_type=photo" + "&editors_choice=true" + "&page=1";
     // possibilities of other restrictions to add
@@ -25,7 +40,7 @@ function getImagesPixabay(interest) {
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        var numOfImages = 4;
+        var numOfImages = 20;
         $("#TBDforWhere").empty()
 
         for (var i = 0; i < numOfImages; i++) {

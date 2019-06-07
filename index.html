@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="container">
+        <h1>Guet Busy</h1>
 
-        
         <form>
             
             <div class="form-group">
@@ -24,21 +24,22 @@
             </div>
             
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
+                <label for="email-input">Email address</label>
                 <input type="email" class="form-control" id="email-input" placeholder="Enter email">
             </div>
 
             <div class="form-group">
-                <label for="name">Postal Code</label>
+                <label for="postalCode">Postal Code</label>
                 <input type="number" class="form-control" id="postalCode-input" placeholder="i.e. 20194">
+                <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
             </div>
             
             <div class="form-group">
-                <label for="interest">Name</label>
+                <label for="interest">What are you interested in?</label>
                 <input type="text" class="form-control" id="interest-input" placeholder="i.e. Knitting">
             </div>
             
-            <button interest="dog" id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
+            <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
         </form>
 
         <div id="TBDforWhere"></div>
