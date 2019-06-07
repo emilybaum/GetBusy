@@ -9,7 +9,7 @@ var userData = {
 }
 console.log(userData)
 
-var pixArrIndex = 0
+var newImagesArr = [];
 
 // button click at end of form
 $("#TBDforButton").on("click", collectUserData)
@@ -22,47 +22,50 @@ function collectUserData() {
     userData.postalCode = $("#postalCode-input").val().trim()
     userData.interest = $("#interest-input").val().trim()
     console.log(userData)
-    // getDataPixabay(userData)
+    getDataPixabay(userData)
 }
 
 
+// runs the ajax request to get images from Pixabay
+function getDataPixabay() {
+    var interest = userData.interest; // do we need to concatenate this if multiple words?
+    var APIImages = "12697501-1309c320d0a4f2a4386273ea4";
+    var queryURLImages = "https://pixabay.com/api/?key=" + APIImages + "&q=" + interest + "&image_type=photo" + "&editors_choice=true" + "&page=1";
 
-// var newImagesArr = [];
+    $.ajax({
+        url: queryURLImages,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        var newImagesArr = response.hits
+        console.log(newImagesArr.length)
+        displayPixabay(newImagesArr);
+    })
+}
 
-// // $("#TBDforButton").on("click", getDataPixabay)
+// click on the Load More button
+$("#showMoreImages").on("click", function (event) {
+    displayPixabay(newImagesArr);
+})
 
-// $("#loadMorePix").on("click", displayPixabay)
+// 
+function displayPixabay(arr) {
+    var numOfImages = 4
+    for (var i = 0; i < numOfImages; i++) {
+        var pixabayDiv = $("<div>")
+        var image = arr[i].webformatURL;
 
-// function displayPixabay(arr) {
-//     // event.preventDefault()
-
-//     var numOfImages = 4
-//     for (var i = 0; i < numOfImages; i++) {
-//         var pixabayDiv = $("<div>")
-//         var image = hits[i].webformatURL;
-
-//         var disaplyImage = $("<img>");
-//         disaplyImage.attr("src", image)
-//         pixabayDiv.append(disaplyImage)
-//         $("#TBDforWhere").append(pixabayDiv);
-//     }
-//     arr.splice(0, 4);
-//     newImagesArr = arr;
-//     console.log(newImagesArr);
-// }
+        var disaplyImage = $("<img>");
+        disaplyImage.attr("src", image)
+        pixabayDiv.append(disaplyImage)
+        $("#TBDforWhere").append(pixabayDiv);  
+    }
+    arr.splice(0, 4);
     
-// var interest = userData.interest; // do we need to concatenate this if multiple words?
-// var APIImages = "12697501-1309c320d0a4f2a4386273ea4";
-// var queryURLImages = "https://pixabay.com/api/?key=" + APIImages + "&q=" + interest + "&image_type=photo" + "&editors_choice=true" + "&page=1";
+    if (arr.length < 4) {
+        var btn = document.getElementById("showMoreImages"); 
+        btn.disabled = true;
+    }
+    newImagesArr = arr;
+}
     
-// function getDataPixabay() {
-//     event.preventDefault()
-//     $.ajax({
-//         url: queryURLImages,
-//         method: "GET"
-//     }).then(function(response) {
-//         console.log(response);
-//         var newImagesArr = response.hits
-//         displayPixabay(newImagesArr);
-//     })
-// }
