@@ -14,9 +14,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>GetBusy</h1>
+        <h1 class="getbusy-eb">GetBusy</h1>
 
-        <form>
+        <form id="user-input">
             <!-- Name -->
             <div class="form-group">
                 <label for="name">Name</label>
@@ -45,12 +45,21 @@
             <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
         </form>
 
+        <h1 id="make-selection-Pixabay" class="title-for-section d-none">What image brings you joy?</h1>
+        <h1 id="make-selection-Etsy" class="title-for-section d-none">What would gift would you like for yourself?</h1>
+        <h1 id="make-selection-Eventbrite" class="title-for-section d-none">Click an event you would like to attend!</h1>
+
         <div id="TBDforWhere"></div>
+        
 
         <br>
 
-        <button id="showMoreImages" type="submit" class="btn btn-primary">Show more</button>
-    
+        <button id="showMorePixabay" type="submit" class="btn btn-primary d-none">Show more</button>
+        <button id="show-more-event" type="submit" class="btn btn-primary d-none">Show more</button>
+        <button id="showMoreEtsy" type="submit" class="btn btn-primary d-none">Show more</button>
+
+        <button id="nextPage" type="submit" class="btn btn-primary">Next</button>
+        
     </div>
     <script src="assets/javascript/app.js "></script>
 </body>
