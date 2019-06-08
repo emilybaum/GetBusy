@@ -1,8 +1,16 @@
 /* css */
 .title {
+  padding-top: 100px;
   text-align: center;
-  font-family: "Brush Script MT";
+  font-family: 'Petit Formal Script', cursive;
+  font-weight: bold;
+  font-size: 4em;
   color: rgb(252, 252, 252)
+}
+.subtitle {
+  text-align: center;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* html {
