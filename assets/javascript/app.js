@@ -98,6 +98,7 @@ function displayPixabay(arr) {
     function displayEvents(arr) {
         eventContainer = $("#events");
             eventRow = $("<div class='row'>");
+
         for (i = 0; i < 4; i++) {
             eventCol = $("<div class='col-sm'>");
             eventCard = $("<div style='width: 18rem;'>");
@@ -113,6 +114,12 @@ function displayPixabay(arr) {
         };
         eventContainer.append(eventRow);
         arr.splice(0,4);
+        
+        if (arr.length < 4) {
+            var btn = document.getElementById("showMoreImages"); 
+            btn.disabled = true;
+        }
+
         newEventArr = arr;
         console.log(newEventArr);
     };
