@@ -23,10 +23,11 @@ function collectUserData() {
     userData.interest = $("#interest-input").val().trim()
     console.log(userData)
     getDataPixabay(userData)
+    $("#showMorePixabay").removeClass("d-none")
 }
 
 
-// runs the ajax request to get images from Pixabay
+// runs the ajax request to get images from PIXABAY
 function getDataPixabay() {
     var interest = userData.interest; // do we need to concatenate this if multiple words?
     var APIImages = "12697501-1309c320d0a4f2a4386273ea4";
@@ -44,12 +45,13 @@ function getDataPixabay() {
 }
 
 // click on the Load More button
-$("#showMoreImages").on("click", function (event) {
+$("#showMorePixabay").on("click", function (event) {
     displayPixabay(newImagesArr);
 })
 
 // 
 function displayPixabay(arr) {
+    $("#showMorePixabay").removeClass("d-none")
     var numOfImages = 4
     imageRow = $("<div class='row'>")
 
@@ -68,24 +70,28 @@ function displayPixabay(arr) {
     arr.splice(0, 4);
     
     if (arr.length < 4) {
-        var btn = document.getElementById("showMoreImages"); 
+        var btn = document.getElementById("showMorePixabay"); 
         btn.disabled = true;
     }
     newImagesArr = arr;
 }
 
-// eventBrite API
+// eventbrite API
     // clear out container div and append button
     function resetPage() {
-    $("form").text("")
-    $("#TBDforWhere").text("")
-    $("#showMoreImage").text("");
-    $("#TBDforWhere").append("<div id='events'></div>")
-    $("#TBDforWhere").append("<button id='show-more-event'>Show More</button>")
-    getData();
+        $("form").empty();
+        $("#TBDforWhere").empty()
+        $("#showMorePixabay").addClass("d-none")
+        $("#show-more-event").addClass("d-none")
+        $("#showMoreEtsy").addClass("d-none")
+
+
+        // $("#TBDforWhere").append("<div id='events'></div>");
+        // $("#TBDforWhere").append("<button id='show-more-event'>Show More</button>");
+        getData();
     }
 
-    // set variables for ajax query
+    // set variables for EVENTBRITE ajax query
     var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
     var searchTerm = userData.interest;
     var sort = "date"
@@ -96,7 +102,8 @@ function displayPixabay(arr) {
     // function parse JSON object and append to page
     var newEventArr = [];
     function displayEvents(arr) {
-        eventContainer = $("#events");
+        $("#show-more-event").removeClass("d-none")
+        eventContainer = $("#TBDforWhere");
             eventRow = $("<div class='row'>");
 
         for (i = 0; i < 4; i++) {
@@ -116,7 +123,7 @@ function displayPixabay(arr) {
         arr.splice(0,4);
         
         if (arr.length < 4) {
-            var btn = document.getElementById("showMoreImages"); 
+            var btn = document.getElementById("showMorePixabay"); 
             btn.disabled = true;
         }
 
