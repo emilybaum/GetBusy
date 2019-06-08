@@ -9,10 +9,23 @@ var userData = {
 }
 console.log(userData)
 
-var newImagesArr = [];
+// has user picked their options?
+var pixabaySelected = false;
+var etsySelected = false;
+var eventbriteSelected = false;
+
+// what option the user picked
+var pixabayPicked = [];
+var etsyPicked = [];
+var eventbritePicked = [];
+
+$(".pixabayToPick").on("click", function(){
+  pixabaySelected = true;
+  alert("Selection was made")
+});
 
 // button click at end of form
-$("#TBDforButton").on("click", collectUserData)
+$(document).on("click", "#TBDforButton", collectUserData)
 
 // function to collect the data that is added by the user and feeds into the object
 function collectUserData() {
@@ -25,23 +38,26 @@ function collectUserData() {
     getDataPixabay(userData)
     $("#showMorePixabay").removeClass("d-none")
     $("#user-input").addClass("d-none")
-
 }
 
+// START PIXABAY ==================================================================
+
+// Array for Pixabay
+var newImagesArr = [];
 
 // runs the ajax request to get images from PIXABAY
 function getDataPixabay() {
     var interest = userData.interest; // do we need to concatenate this if multiple words?
     var APIImages = "12697501-1309c320d0a4f2a4386273ea4";
-    var queryURLImages = "https://pixabay.com/api/?key=" + APIImages + "&q=" + interest + "&image_type=photo" + "&editors_choice=true" + "&page=1";
+    var queryURLImages = "https://pixabay.com/api/?key=" + APIImages + "&q=" + interest + "&image_type=photo" + "&page=1"; 
 
     $.ajax({
         url: queryURLImages,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        // console.log(response);
         var newImagesArr = response.hits
-        console.log(newImagesArr.length)
+        // console.log(newImagesArr.length)
         displayPixabay(newImagesArr);
     })
 }
@@ -60,7 +76,7 @@ function displayPixabay(arr) {
 
     for (var i = 0; i < numOfImages; i++) {
         var imageCol = $("<div class='col-sm'>")
-        var pixabayDiv = $("<div class='card'>")
+        var pixabayDiv = $("<div class='card pixabayToPick'>")
         var image = arr[i].webformatURL;
 
         var disaplyImage = $("<img class='card-image-top eb-card-pixabay'>");
@@ -92,22 +108,17 @@ function resetPage() {
     // $("#make-selection-Eventbrite").addClass("d-none")
     // $("#TBDforWhere").append("<div id='events'></div>");
     // $("#TBDforWhere").append("<button id='show-more-event'>Show More</button>");
-    
 }
+// END PIXABAY ==================================================================
 
-$("#nextPage").on("click", nextButtonClick)
-function nextButtonClick() {
-    resetPage();
-    getDataEventbrite();
-}
+
+ 
+// START EVENTBRITE ==================================================================
+
+// user clicks Next to trigger Eventbrite
+$("#nextPageToEventbrite").on("click", getDataEventbrite)
 
 // set variables for EVENTBRITE ajax query
-var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
-var searchTerm = userData.interest;
-var sort = "date"
-var address = "10011"
-var distance = 5 + "mi"
-var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
 
 // function parse JSON object and append to page
 var newEventArr = [];
@@ -145,6 +156,13 @@ function displayEvents(arr) {
 
 // ajax function for EVENTBRITE
 function getDataEventbrite(){
+    var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
+    var searchTerm = userData.interest;
+    var sort = "date"
+    var address = "10011"
+    var distance = 5 + "mi"
+    var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
+
     $.ajax({
         url: eventBriteURL,
         method: "GET",
@@ -155,10 +173,76 @@ function getDataEventbrite(){
         displayEvents(newEventArr);
     });
 }
+// END EVENTBRITE ==================================================================
 
-// click handler for show-more-event button to load more event
-$("#show-more-event").on("click", function(event) {
-    event.preventDefault();
-    displayEvents(newEventArr);
-});
+
+// START ETSY ==================================================================
+// trigger when the next button has been clicked on the previous page
+$("#nextPageToEtsy").on("click", getDataEtsy)
+
+// click handler for show-more-event button to load more ETSY
+$("#showMoreEtsy").on("click", function (event) {
+    displayEtsy(newEtsyArr);
+})
+
+// store Etsy array
+var newEtsyArr = [];
+
+// put Etsy items on the page
+function displayEtsy(arr) {
+    // makes the Show More button visable
+    $("#showMorePixabay").addClass("d-none")
+    $("#showMoreEtsy").removeClass("d-none")
+
+    // creating the holder for Etsy content
+    imageContainer = $("#TBDforWhere");
+    imageRow = $("<div class='row'>");
+    for (i = 0; i < 4; i++) {
+        imageCol = $("<div>");
+        imageCard = $("<div style='width: 18em;'>")
+            imageCard.addClass("card");
+            imageCard.append("<img src=" + JSON.stringify(arr[i].Images[0].url_170x135) + ">");
+        imageCardBody = $("<div>");
+            imageCardBody.addClass("card-body");
+                imageCardLink = $("<a>");
+                    imageCardLink.attr("href", arr[i].url);
+                        imageCardTitle = $("<h5>" + arr[i].title + "</h5>")
+                    imageCardLink.append(imageCardTitle);
+            imageCardBody.append(imageCardLink);
+            imageCardBody.append("<h6>" + arr[i].price + "</h6>");
+        imageCard.append(imageCardBody);
+        imageCol.append(imageCard);
+        imageRow.append(imageCol);
+    }
+    imageContainer.append(imageRow);
+    arr.splice(0,4);
+    newEtsyArr = arr;
+    // console.log(newEtsyArr);
+}
+
+// run API for Etsy data
+function getDataEtsy() {
+    // set variables for ETSY ajax query
+    var api_key_Etsy = "7u4gcw7pr0m2knv9opn4f5h6";
+    var interestEtsy = userData.interest
+
+    var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + interestEtsy + "&limit=20&includes=Images:1&api_key=" + api_key_Etsy;
+
+
+    $.ajax({
+        url: etsyURL,
+        dataType: 'jsonp',
+        success: function(data) {
+            console.log(etsyURL)
+            console.log(data)
+            newEtsyArr = data.results
+            console.log(newEtsyArr);
+            displayEtsy(newEtsyArr);
+        }
+    });
+
+    return false;
+};
+// END ETSY ==================================================================
+
     
