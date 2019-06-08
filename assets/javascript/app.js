@@ -88,7 +88,7 @@ function displayPixabay(arr) {
 
         // $("#TBDforWhere").append("<div id='events'></div>");
         // $("#TBDforWhere").append("<button id='show-more-event'>Show More</button>");
-        getData();
+        getDataEventbrite();
     }
 
     // set variables for EVENTBRITE ajax query
@@ -131,8 +131,8 @@ function displayPixabay(arr) {
         console.log(newEventArr);
     };
 
-    // ajax function
-    function getData(){
+    // ajax function for EVENTBRITE
+    function getDataEventbrite(){
         $.ajax({
             url: eventBriteURL,
             method: "GET",
