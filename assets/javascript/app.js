@@ -25,7 +25,7 @@ $(".pixabayToPick").on("click", function(){
 });
 
 // button click at end of form
-$("#TBDforButton").on("click", collectUserData)
+$(document).on("click", "#TBDforButton", collectUserData)
 
 // function to collect the data that is added by the user and feeds into the object
 function collectUserData() {
@@ -55,9 +55,9 @@ function getDataPixabay() {
         url: queryURLImages,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        // console.log(response);
         var newImagesArr = response.hits
-        console.log(newImagesArr.length)
+        // console.log(newImagesArr.length)
         displayPixabay(newImagesArr);
     })
 }
@@ -119,12 +119,6 @@ function resetPage() {
 $("#nextPageToEventbrite").on("click", getDataEventbrite)
 
 // set variables for EVENTBRITE ajax query
-var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
-var searchTerm = userData.interest;
-var sort = "date"
-var address = "10011"
-var distance = 5 + "mi"
-var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
 
 // function parse JSON object and append to page
 var newEventArr = [];
@@ -162,6 +156,13 @@ function displayEvents(arr) {
 
 // ajax function for EVENTBRITE
 function getDataEventbrite(){
+    var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
+    var searchTerm = userData.interest;
+    var sort = "date"
+    var address = "10011"
+    var distance = 5 + "mi"
+    var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
+
     $.ajax({
         url: eventBriteURL,
         method: "GET",
@@ -176,26 +177,24 @@ function getDataEventbrite(){
 
 
 // START ETSY ==================================================================
+// trigger when the next button has been clicked on the previous page
 $("#nextPageToEtsy").on("click", getDataEtsy)
 
-// function nextButtonClick() {
-//     resetPage();
-//     getDataEventbrite();
-// }
-
+// click handler for show-more-event button to load more ETSY
 $("#showMoreEtsy").on("click", function (event) {
     displayEtsy(newEtsyArr);
 })
 
+// store Etsy array
 var newEtsyArr = [];
-
-// set variables for ETSY ajax query
-var api_key_Etsy = "7u4gcw7pr0m2knv9opn4f5h6";
-var interest_Etsy = userData.interest
-var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + interest_Etsy +"&limit=20&includes=Images:1&api_key=" + api_key_Etsy;
 
 // put Etsy items on the page
 function displayEtsy(arr) {
+    // makes the Show More button visable
+    $("#showMorePixabay").addClass("d-none")
+    $("#showMoreEtsy").removeClass("d-none")
+
+    // creating the holder for Etsy content
     imageContainer = $("#TBDforWhere");
     imageRow = $("<div class='row'>");
     for (i = 0; i < 4; i++) {
@@ -218,38 +217,32 @@ function displayEtsy(arr) {
     imageContainer.append(imageRow);
     arr.splice(0,4);
     newEtsyArr = arr;
-    console.log(newEtsyArr);
+    // console.log(newEtsyArr);
 }
 
 // run API for Etsy data
 function getDataEtsy() {
-    api_key = "7u4gcw7pr0m2knv9opn4f5h6";
-    terms = "cups"
-    etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords="+
-    terms+"&limit=20&includes=Images:1&api_key="+api_key;
+    // set variables for ETSY ajax query
+    var api_key_Etsy = "7u4gcw7pr0m2knv9opn4f5h6";
+    var interestEtsy = userData.interest
+
+    var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + interestEtsy + "&limit=20&includes=Images:1&api_key=" + api_key_Etsy;
+
 
     $.ajax({
         url: etsyURL,
         dataType: 'jsonp',
         success: function(data) {
+            console.log(etsyURL)
+            console.log(data)
             newEtsyArr = data.results
-            // console.log(newEtsyArr);
+            console.log(newEtsyArr);
             displayEtsy(newEtsyArr);
-
         }
     });
 
     return false;
-    };
-    displayEtsy()
-    $("#show-more").on("click", function(event){
-        displayImages(newEtsyArr);
-})
-
-// click handler for show-more-event button to load more ETSY
-$("#showMoreEtsy").on("click", function(event) {
-    displayEtsy(newEtsyArr);
-});
+};
 // END ETSY ==================================================================
 
     
