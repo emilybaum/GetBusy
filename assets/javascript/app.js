@@ -24,6 +24,8 @@ function collectUserData() {
     console.log(userData)
     getDataPixabay(userData)
     $("#showMorePixabay").removeClass("d-none")
+    $("#user-input").addClass("d-none")
+
 }
 
 
@@ -52,6 +54,7 @@ $("#showMorePixabay").on("click", function (event) {
 // 
 function displayPixabay(arr) {
     $("#showMorePixabay").removeClass("d-none")
+    $("#make-selection-Pixabay").removeClass("d-none")
     var numOfImages = 4
     imageRow = $("<div class='row'>")
 
@@ -77,76 +80,85 @@ function displayPixabay(arr) {
 }
 
 // eventbrite API
-    // clear out container div and append button
-    function resetPage() {
-        $("form").empty();
-        $("#TBDforWhere").empty()
-        $("#showMorePixabay").addClass("d-none")
-        $("#show-more-event").addClass("d-none")
-        $("#showMoreEtsy").addClass("d-none")
-
-
-        // $("#TBDforWhere").append("<div id='events'></div>");
-        // $("#TBDforWhere").append("<button id='show-more-event'>Show More</button>");
-        getDataEventbrite();
-    }
-
-    // set variables for EVENTBRITE ajax query
-    var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
-    var searchTerm = userData.interest;
-    var sort = "date"
-    var address = "10011"
-    var distance = 5 + "mi"
-    var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
+// clear out container div and append button
+function resetPage() {
+    $("form").empty();
+    $("#TBDforWhere").empty()
+    $("#showMorePixabay").addClass("d-none")
+    $("#show-more-event").addClass("d-none")
+    $("#showMoreEtsy").addClass("d-none")
+    $("#make-selection-Pixabay").addClass("d-none")
+    // $("#make-selection-Etsy").addClass("d-none")
+    // $("#make-selection-Eventbrite").addClass("d-none")
+    // $("#TBDforWhere").append("<div id='events'></div>");
+    // $("#TBDforWhere").append("<button id='show-more-event'>Show More</button>");
     
-    // function parse JSON object and append to page
-    var newEventArr = [];
-    function displayEvents(arr) {
-        $("#show-more-event").removeClass("d-none")
-        eventContainer = $("#TBDforWhere");
-            eventRow = $("<div class='row'>");
+}
 
-        for (i = 0; i < 4; i++) {
-            eventCol = $("<div class='col-sm'>");
-            eventCard = $("<div style='width: 18rem;'>");
-                eventCard.addClass("card");
-                eventCard.append("<img class='card-img-top' src=" + arr[i].logo.original.url + " style='width:200px'</img>");
-            eventCardBody = $("<div>")
-                eventCardBody.addClass("card-body")
-                eventCardBody.append("<h5>" + arr[i].name.html + "</h5>");
-                eventCardBody.append("<p>" + arr[i].summary + "</p>");
-            eventCard.append(eventCardBody);
-            eventCol.append(eventCard)
-            eventRow.append(eventCol);
-        };
-        eventContainer.append(eventRow);
-        arr.splice(0,4);
-        
-        if (arr.length < 4) {
-            var btn = document.getElementById("showMorePixabay"); 
-            btn.disabled = true;
-        }
+$("#nextPage").on("click", nextButtonClick)
+function nextButtonClick() {
+    resetPage();
+    getDataEventbrite();
+}
 
-        newEventArr = arr;
-        console.log(newEventArr);
+// set variables for EVENTBRITE ajax query
+var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
+var searchTerm = userData.interest;
+var sort = "date"
+var address = "10011"
+var distance = 5 + "mi"
+var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
+
+// function parse JSON object and append to page
+var newEventArr = [];
+function displayEvents(arr) {
+    $("#make-selection-Eventbrite").removeClass("d-none")
+    // display the show more events button
+    $("#show-more-event").removeClass("d-none")
+    eventContainer = $("#TBDforWhere");
+        eventRow = $("<div class='row'>");
+
+    for (i = 0; i < 4; i++) {
+        eventCol = $("<div class='col-sm'>");
+        eventCard = $("<div style='width: 18rem;'>");
+            eventCard.addClass("card");
+            eventCard.append("<img class='card-img-top' src=" + arr[i].logo.original.url + " style='width:200px'</img>");
+        eventCardBody = $("<div>")
+            eventCardBody.addClass("card-body")
+            eventCardBody.append("<h5>" + arr[i].name.html + "</h5>");
+            eventCardBody.append("<p>" + arr[i].summary + "</p>");
+        eventCard.append(eventCardBody);
+        eventCol.append(eventCard)
+        eventRow.append(eventCol);
     };
-
-    // ajax function for EVENTBRITE
-    function getDataEventbrite(){
-        $.ajax({
-            url: eventBriteURL,
-            method: "GET",
-        }).then(function(response){
-            console.log(response);
-            newEventArr = response.events;
-            console.log(newEventArr);
-            displayEvents(newEventArr);
-        });
+    eventContainer.append(eventRow);
+    arr.splice(0,4);
+    
+    if (arr.length < 4) {
+        var btn = document.getElementById("showMorePixabay"); 
+        btn.disabled = true;
     }
 
-    // click handler for show-more-event button to load more event
-    $("#show-more-event").on("click", function(event) {
-        event.preventDefault();
+    newEventArr = arr;
+    console.log(newEventArr);
+};
+
+// ajax function for EVENTBRITE
+function getDataEventbrite(){
+    $.ajax({
+        url: eventBriteURL,
+        method: "GET",
+    }).then(function(response){
+        console.log(response);
+        newEventArr = response.events;
+        console.log(newEventArr);
         displayEvents(newEventArr);
     });
+}
+
+// click handler for show-more-event button to load more event
+$("#show-more-event").on("click", function(event) {
+    event.preventDefault();
+    displayEvents(newEventArr);
+});
     

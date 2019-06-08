@@ -1,8 +1,8 @@
 /* css */
-h1 {
-text-align: center;
-font-family: "Brush Script MT";
-color: rgb(252, 252, 252)
+.title {
+  text-align: center;
+  font-family: "Brush Script MT";
+  color: rgb(252, 252, 252)
 }
 
 /* html {
@@ -32,7 +32,10 @@ body, html {
 .eb-card-pixabay {
   width: 100%;
   border-radius: 2px;
+}
 
+.title-for-section  {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
