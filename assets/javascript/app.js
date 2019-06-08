@@ -79,9 +79,10 @@ function displayPixabay(arr) {
         var pixabayDiv = $("<div class='card pixabayToPick'>")
         var image = arr[i].webformatURL;
 
-        var disaplyImage = $("<img class='card-image-top eb-card-pixabay'>");
-        disaplyImage.attr("src", image)
-        pixabayDiv.append(disaplyImage)
+        var displayImage = $("<img class='card-image-top eb-card-pixabay'>");
+        displayImage.attr("src", image)
+            displayImage.attr("data-img", image);
+        pixabayDiv.append(displayImage)
         imageCol.append(pixabayDiv)
         imageRow.append(imageCol)
         $("#TBDforWhere").append(imageRow);  
@@ -133,6 +134,10 @@ function displayEvents(arr) {
         eventCol = $("<div class='col-sm'>");
         eventCard = $("<div style='width: 18rem;'>");
             eventCard.addClass("card");
+            eventCard.attr("data-img", arr[i].logo.original.url);
+            eventCard.attr("data-name", arr[i].name.html);
+            eventCard.attr("data-summary", arr[i].summary);
+            eventCard.attr("data-url", arr[i].url);
             eventCard.append("<img class='card-img-top' src=" + arr[i].logo.original.url + " style='width:200px'</img>");
         eventCardBody = $("<div>")
             eventCardBody.addClass("card-body")
@@ -201,6 +206,10 @@ function displayEtsy(arr) {
         imageCol = $("<div>");
         imageCard = $("<div style='width: 18em;'>")
             imageCard.addClass("card");
+            imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_170x135));
+            imageCard.attr("data-url", arr[i].url);
+            imageCard.attr("data-price", arr[i].price);
+            imageCard.attr("data-title", arr[i].title);
             imageCard.append("<img src=" + JSON.stringify(arr[i].Images[0].url_170x135) + ">");
         imageCardBody = $("<div>");
             imageCardBody.addClass("card-body");
