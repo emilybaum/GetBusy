@@ -58,7 +58,7 @@ function displayPixabay(arr) {
         var pixabayDiv = $("<div class='card'>")
         var image = arr[i].webformatURL;
 
-        var disaplyImage = $("<img class='card-image-top'>");
+        var disaplyImage = $("<img class='card-image-top eb-card-pixabay'>");
         disaplyImage.attr("src", image)
         pixabayDiv.append(disaplyImage)
         imageCol.append(pixabayDiv)
