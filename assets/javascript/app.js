@@ -37,6 +37,7 @@ var eventbritePicked = {
 
 // USER SELECTION MADE for Pixabay
 $(document).on("click", ".pixabayToPick", function() {
+    console.log($(this))
     pixabaySelected = true;
 
     dataImg = $(".pixabayToPick").attr("data-img")
@@ -48,6 +49,7 @@ $(document).on("click", ".pixabayToPick", function() {
 
 // USER SELECTION for Etsy
 $(document).on("click", ".etsyPicked", function() {
+    console.log($(this))
     etsySelected = true;
 
     dataImg = $(".etsyPicked").attr("data-img");
@@ -66,6 +68,7 @@ $(document).on("click", ".etsyPicked", function() {
 
 // USER SELECTION for Eventbrite
 $(document).on("click", ".eventbritePicked", function() {
+    console.log($(this))
     eventbriteSelected = true;
 
     dataImg = $(".eventbritePicked").attr("data-img");
@@ -78,9 +81,9 @@ $(document).on("click", ".eventbritePicked", function() {
         eventbritePicked.dataUrl = dataUrl
 
     console.log(eventbritePicked)
+    console.log(eventbritePicked.dataImg)
     alert("Selection was made Eventbrite")
 })
-
 
 
 
@@ -212,13 +215,15 @@ function displayEvents(arr) {
 
     for (i = 0; i < 4; i++) {
         eventCol = $("<div class='col-sm'>");
-        eventCard = $("<div eventbritePicked>");
-            eventCard.addClass("card-img-top image-card-eventbrite");
+        eventCard = $("<div>");
+            eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
+            console.log(arr)
+            // console.log(arr[i].logo.original.url)
             eventCard.attr("data-img", arr[i].logo.original.url);
             eventCard.attr("data-name", arr[i].name.html);
             eventCard.attr("data-summary", arr[i].summary);
             eventCard.attr("data-url", arr[i].url);
-            eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + " </img>");
+            eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + "</img>");
         eventCardBody = $("<div>")
             eventCardBody.addClass("card-body")
             eventCardBody.append("<h5>" + arr[i].name.html + "</h5>");
