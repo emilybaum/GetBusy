@@ -1,8 +1,19 @@
 /* css */
 .title {
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
-  font-family: "Brush Script MT";
-  color: rgb(252, 252, 252)
+  font-family: 'Lobster', cursive;
+  font-size: 90pt;
+  color: rgb(252, 252, 252);
+}
+
+.title2 {
+  padding-top: 10px;
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 40pt;
+  color: rgb(252, 252, 252);
 }
 
 /* html {
@@ -39,3 +50,13 @@ body, html {
 }
 
 
+
+ .startBtn {
+  position:absolute; 
+  transition: .5s ease;
+  top: 72%; 
+  right: 43%;
+  background-color: magenta;
+  font-family: 'Lobster', cursive;
+  font-size: 20pt;
+}
