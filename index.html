@@ -13,40 +13,48 @@
     <title>GetBusy</title>
 </head>
 <body>
+    <div class="jumbotron jumbotron-fluid getbusy-background">
+        <div class="container">
+            <h1 class="display-4 text-center getbusy-title">Get Busy (make a logo?)</h1>
+            <p class="lead text-center getbusy-subtext">The UnDating Experience... stop dating and start living</p>
+        </div>
+    </div>
     <div class="container">
-        <h1 class="getbusy-eb">GetBusy</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="user-input" class="mx-auto">
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="userName-input" placeholder="Your name">
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email-input">Email address</label>
+                        <input type="email" class="form-control" id="email-input" placeholder="Enter email">
+                    </div>
+                    
+                    <!-- Postal code -->
+                    <div class="form-group">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="number" class="form-control" id="postalCode-input" placeholder="i.e. 20194">
+                        <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
+                    </div>
+                    
+                    <!-- Interest -->
+                    <div class="form-group">
+                        <label for="interest">What are you interested in?</label>
+                        <input type="text" class="form-control" id="interest-input" placeholder="i.e. Knitting">
+                    </div>
+                    
+                    <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
+                </form>
+            </div> <!-- end column for form -->
+        </div> <!-- end row for form -->
 
-        <form id="user-input">
-            <!-- Name -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="userName-input" placeholder="Your name">
-            </div>
-            
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email-input">Email address</label>
-                <input type="email" class="form-control" id="email-input" placeholder="Enter email">
-            </div>
-            
-            <!-- Postal code -->
-            <div class="form-group">
-                <label for="postalCode">Postal Code</label>
-                <input type="number" class="form-control" id="postalCode-input" placeholder="i.e. 20194">
-                <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
-            </div>
-            
-            <!-- Interest -->
-            <div class="form-group">
-                <label for="interest">What are you interested in?</label>
-                <input type="text" class="form-control" id="interest-input" placeholder="i.e. Knitting">
-            </div>
-            
-            <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
-        </form>
-
-        <h1 id="make-selection-Pixabay" class="title-for-section d-none">What image brings you joy?</h1>
-        <h1 id="make-selection-Etsy" class="title-for-section d-none">What would gift would you like for yourself?</h1>
+        <h1 id="make-selection-Pixabay" class="title-for-section d-none">Pick an image that brings you joy</h1>
+        <h1 id="make-selection-Etsy" class="title-for-section d-none">What gift would you like for yourself?</h1>
         <h1 id="make-selection-Eventbrite" class="title-for-section d-none">Click an event you would like to attend!</h1>
 
         <div id="TBDforWhere"></div>
@@ -56,13 +64,13 @@
 
         <button id="showMorePixabay" type="submit" class="btn btn-primary d-none">Show more Pixabay</button>
         <button id="showMoreEtsy" type="submit" class="btn btn-primary d-none">Show more Etsy</button>
-        <button id="show-more-event" type="submit" class="btn btn-primary d-none">Show more Eventbrite</button>
+        <button id="showMoreEventbrite" type="submit" class="btn btn-primary d-none">Show more Eventbrite</button>
         
 
 
-        <button id="nextPageToEtsy" type="submit" class="btn btn-primary">Next</button>
-        <button id="nextPageToEventbrite" type="submit" class="btn btn-primary d-none">Next</button>
-        
+        <button id="nextPageToEtsy" type="submit" class="btn btn-primary d-none">Next to Etsy</button>
+        <button id="nextPageToEventbrite" type="submit" class="btn btn-primary d-none">Next to Eventbrite</button>
+        <button id="nextPageToInvite" type="submit" class="btn btn-primary d-none">Next to Eventbrite</button>
     </div>
     <script src="assets/javascript/app.js "></script>
 </body>
