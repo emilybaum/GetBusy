@@ -15,9 +15,25 @@ var etsySelected = false;
 var eventbriteSelected = false;
 
 // what option the user picked
-var pixabayPicked = [];
-var etsyPicked = [];
-var eventbritePicked = [];
+var pixabayPicked = {
+    src: "",
+};
+
+var etsyPicked = {
+    dataImg: "",
+    dataUrl: "",
+    dataPrice: "",
+    dataTitle: "",
+};
+
+
+var eventbritePicked = {
+    dataImg: "",
+    dataName: "",
+    dataSummary: "",
+    dataUrl: "",
+};
+
 
 $(".pixabayToPick").on("click", function(){
   pixabaySelected = true;
@@ -79,7 +95,7 @@ function displayPixabay(arr) {
         var pixabayDiv = $("<div class='card pixabayToPick'>")
         var image = arr[i].webformatURL;
 
-        var displayImage = $("<img class='card-image-top eb-card-pixabay'>");
+        var displayImage = $("<img class='card-image-top img-card-pixabay'>");
         displayImage.attr("src", image)
             displayImage.attr("data-img", image);
         pixabayDiv.append(displayImage)
@@ -132,7 +148,7 @@ function displayEvents(arr) {
 
     for (i = 0; i < 4; i++) {
         eventCol = $("<div class='col-sm'>");
-        eventCard = $("<div style='width: 18rem;'>");
+        eventCard = $("<div eventbritePicked>");
             eventCard.addClass("card");
             eventCard.attr("data-img", arr[i].logo.original.url);
             eventCard.attr("data-name", arr[i].name.html);
@@ -203,24 +219,24 @@ function displayEtsy(arr) {
     imageContainer = $("#TBDforWhere");
     imageRow = $("<div class='row'>");
     for (i = 0; i < 4; i++) {
-        imageCol = $("<div>");
-        imageCard = $("<div style='width: 18em;'>")
-            imageCard.addClass("card");
+        imageCol = $("<div class='col-sm'>");
+        imageCard = $("<div class='image-card-etsy'>")
+            imageCard.addClass("card etsyPicked");
             imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_170x135));
             imageCard.attr("data-url", arr[i].url);
             imageCard.attr("data-price", arr[i].price);
             imageCard.attr("data-title", arr[i].title);
             imageCard.append("<img src=" + JSON.stringify(arr[i].Images[0].url_170x135) + ">");
-        imageCardBody = $("<div>");
+        imageCardBody = $("<div class='body-card-etsy'>");
             imageCardBody.addClass("card-body");
                 imageCardLink = $("<a>");
                     imageCardLink.attr("href", arr[i].url);
-                        imageCardTitle = $("<h5>" + arr[i].title + "</h5>")
+                        imageCardTitle = $("<h5 class='title-card-etsy'>" + arr[i].title + "</h5>")
                     imageCardLink.append(imageCardTitle);
             imageCardBody.append(imageCardLink);
-            imageCardBody.append("<h6>" + arr[i].price + "</h6>");
+            imageCardBody.append("<h6 class='price-card-etsy'>" + arr[i].price + "</h6>");
         imageCard.append(imageCardBody);
-        imageCol.append(imageCard);
+        imageCol.append(imageCard); 
         imageRow.append(imageCol);
     }
     imageContainer.append(imageRow);

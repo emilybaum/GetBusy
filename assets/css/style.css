@@ -1,4 +1,3 @@
-/* css */
 .title {
   padding-top: 100px;
   text-align: center;
@@ -7,6 +6,7 @@
   font-size: 4em;
   color: rgb(252, 252, 252)
 }
+
 .subtitle {
   text-align: center;
   color: white;
@@ -37,7 +37,7 @@ body, html {
   background-size: cover;
 }
 
-.eb-card-pixabay {
+.img-card-pixabay {
   width: 100%;
   border-radius: 2px;
 }
@@ -46,4 +46,18 @@ body, html {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.image-card-etsy {
+  /* containg the image */
+}
 
+.body-card-etsy {
+  /* text contnet of the card */
+}
+
+.title-card-etsy {
+  /* title of the etsy card */
+}
+
+.price-card-etsy {
+  /* price of the etsy item */
+}
