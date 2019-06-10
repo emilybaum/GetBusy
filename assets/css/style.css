@@ -24,6 +24,18 @@
   color: #286da8;
 }
 
+.getbusy-subtext {
+  color: #438496;
+}
+
+.getbusy-background {
+  background-color: #b37d4e25;
+}
+
+#user-input {
+  width: 70%;
+}
+
 /* html {
     background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
     background-repeat: no-repeat;

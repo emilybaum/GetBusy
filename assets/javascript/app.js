@@ -58,7 +58,7 @@ function collectUserData() {
 
 // USER SELECTION MADE
 function whenPixabayPicked() {
-
+    
 }
 
 
