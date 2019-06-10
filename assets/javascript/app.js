@@ -175,12 +175,12 @@ function displayEvents(arr) {
     for (i = 0; i < 4; i++) {
         eventCol = $("<div class='col-sm'>");
         eventCard = $("<div eventbritePicked>");
-            eventCard.addClass("card-img-top");
+            eventCard.addClass("card-img-top image-card-eventbrite");
             eventCard.attr("data-img", arr[i].logo.original.url);
             eventCard.attr("data-name", arr[i].name.html);
             eventCard.attr("data-summary", arr[i].summary);
             eventCard.attr("data-url", arr[i].url);
-            eventCard.append("<img class='card-img-top' src=" + arr[i].logo.original.url + " style='width:200px'</img>");
+            eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + " </img>");
         eventCardBody = $("<div>")
             eventCardBody.addClass("card-body")
             eventCardBody.append("<h5>" + arr[i].name.html + "</h5>");
@@ -258,13 +258,13 @@ function displayEtsy(arr) {
     imageRow = $("<div class='row'>");
     for (i = 0; i < 4; i++) {
         imageCol = $("<div class='col-sm'>");
-        imageCard = $("<div class='image-card-etsy'>")
-            imageCard.addClass("card-img-top etsyPicked");
-            imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_170x135));
+        imageCard = $("<div>")
+            imageCard.addClass("card-img-top image-card-etsy etsyPicked");
+            imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_fullxfull));
             imageCard.attr("data-url", arr[i].url);
             imageCard.attr("data-price", arr[i].price);
             imageCard.attr("data-title", arr[i].title);
-            imageCard.append("<img src=" + JSON.stringify(arr[i].Images[0].url_170x135) + ">");
+            imageCard.append("<img class ='image-img-etsy' src=" + JSON.stringify(arr[i].Images[0].url_fullxfull) + ">");
         imageCardBody = $("<div class='body-card-etsy'>");
             imageCardBody.addClass("card-body");
                 imageCardLink = $("<a target='_blank'>");
@@ -272,7 +272,7 @@ function displayEtsy(arr) {
                         imageCardTitle = $("<h5 class='title-card-etsy'>" + arr[i].title + "</h5>")
                     imageCardLink.append(imageCardTitle);
             imageCardBody.append(imageCardLink);
-            imageCardBody.append("<h6 class='price-card-etsy'>" + arr[i].price + "</h6>");
+            imageCardBody.append("<h6 class='price-card-etsy'>" + "$" + arr[i].price + "</h6>");
         imageCard.append(imageCardBody);
         imageCol.append(imageCard); 
         imageRow.append(imageCol);

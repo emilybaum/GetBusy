@@ -1,3 +1,10 @@
+/* color options 
+#286da8 #37b "steel blue" hsl(207,61,40) rgb(40,109,168)
+#cd5360 #d56 "indian red" hsl(353,54,56) rgb(205,83,96)
+#b37d4e #b85 "peru" hsl(27,39,50) rgb(179,125,78)
+#438496 #489 "other blue" hsl(193,38,42) rgb(67,132,150)
+*/
+
 .title {
   padding-top: 100px;
   text-align: center;
@@ -11,6 +18,10 @@
   text-align: center;
   color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.getbusy-title {
+  color: #286da8;
 }
 
 /* html {
@@ -37,30 +48,71 @@ body, html {
   background-size: cover;
 }
 
+
+
+.title-for-section  {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #438496
+}
+
+
+
+/* ALL CARDS ========================================*/
+.card-img-top {
+  margin: 1px;
+}
+
+.col-sm {
+  /* not sure if we need this */
+}
+/* ================================================== */
+
+
+/* PIXABAY CARD STYLES ============================== */
 .img-card-pixabay {
   width: 100%;
   border-radius: 2px;
 }
+/* ================================================== */
 
-.title-for-section  {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: red;
+
+
+/* ETSY CARD STYLES ================================= */
+/* div containg the image/contnet */
+.image-card-etsy {
+  background: #b37d4e10;
+  align-items: center;
 }
 
-.image-card-etsy {
-  /* containg the image */
+/* the picture on etsy */
+.image-img-etsy {
   width: 100%;
 }
 
+/* text contnet of the card */
 .body-card-etsy {
-  /* text contnet of the card */
+  /* not sure if we need this */
 }
 
+/* title of the etsy card */
 .title-card-etsy {
-  /* title of the etsy card */
+  /* not sure if we need this */
 }
 
+/* price of the etsy item */
 .price-card-etsy {
-  /* price of the etsy item */
+  color: #b37d4e;
+}
+/* ================================================== */
+
+
+
+
+
+/* EVENTBRITE CARD STYLES =========================== */
+.image-card-eventbrite {
+  background: #b37d4e10;
 }
 
+
+/* ================================================== */
