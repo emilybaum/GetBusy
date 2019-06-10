@@ -146,7 +146,7 @@ function displayPixabay(arr) {
     imageRow = $("<div class='row'>")
 
     for (var i = 0; i < numOfImages; i++) {
-        var imageCol = $("<div class='col-sm'>")
+        var imageCol = $("<div class='col-sm mb-3'>")
         var pixabayDiv = $("<div class='card pixabayToPick'>")
         var image = arr[i].webformatURL;
 
@@ -192,7 +192,9 @@ function resetPage() {
 // user clicks Next to trigger Eventbrite
 $("#nextPageToEventbrite").on("click", getDataEventbrite)
 
-// set variables for EVENTBRITE ajax query
+$("#showMoreEventbrite").on("click", function (event) {
+    displayEvents(newEventArr);
+})
 
 // function parse JSON object and append to page
 var newEventArr = [];
@@ -214,7 +216,7 @@ function displayEvents(arr) {
         eventRow = $("<div class='row'>");
 
     for (i = 0; i < 4; i++) {
-        eventCol = $("<div class='col-sm'>");
+        eventCol = $("<div class='col-sm mb-3'>");
         eventCard = $("<div>");
             eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
             console.log(arr)
@@ -273,7 +275,7 @@ function getDataEventbrite(){
 // trigger when the next button has been clicked on the previous page
 $("#nextPageToEtsy").on("click", getDataEtsy)
 
-// click handler for showMoreEventbrite button to load more ETSY
+// click handler for showMoreEtsy button to load more ETSY
 $("#showMoreEtsy").on("click", function (event) {
     displayEtsy(newEtsyArr);
 })
@@ -300,7 +302,7 @@ function displayEtsy(arr) {
     imageContainer = $("#TBDforWhere");
     imageRow = $("<div class='row'>");
     for (i = 0; i < 4; i++) {
-        imageCol = $("<div class='col-sm'>");
+        imageCol = $("<div class='col-sm mb-3'>");
         imageCard = $("<div>")
             imageCard.addClass("card-img-top image-card-etsy etsyPicked");
             imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_fullxfull));
