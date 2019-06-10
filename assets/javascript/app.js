@@ -57,7 +57,7 @@ function collectUserData() {
 }
 
 // USER SELECTION MADE
-function whenPixabayPicked {
+function whenPixabayPicked() {
 
 }
 
@@ -162,6 +162,12 @@ function displayEvents(arr) {
 
     // display the show more events button
     $("#showMoreEventbrite").removeClass("d-none")
+    $("#showMoreEtsy").addClass("d-none")
+
+    // showing the next page button and removing the currnet page button
+    $("#nextPageToInvite").removeClass("d-none");
+    $("#nextPageToEventbrite").addClass("d-none");
+    
 
     eventContainer = $("#TBDforWhere");
         eventRow = $("<div class='row'>");
@@ -169,7 +175,7 @@ function displayEvents(arr) {
     for (i = 0; i < 4; i++) {
         eventCol = $("<div class='col-sm'>");
         eventCard = $("<div eventbritePicked>");
-            eventCard.addClass("card");
+            eventCard.addClass("card-img-top");
             eventCard.attr("data-img", arr[i].logo.original.url);
             eventCard.attr("data-name", arr[i].name.html);
             eventCard.attr("data-summary", arr[i].summary);
@@ -197,9 +203,8 @@ function displayEvents(arr) {
 
 // ajax function for EVENTBRITE
 function getDataEventbrite(){
-    // showing the next page button and removing the currnet page button
-    $("#nextPageToEventbrite").addClass("d-none");
-    $("#nextPageToInvite").removeClass("d-none");
+    // empty the contents of the container
+    $("#TBDforWhere").empty();
 
     var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
     var searchTerm = userData.interest;
@@ -238,8 +243,15 @@ function displayEtsy(arr) {
     // makes the Show More button visable
     $("#make-selection-Etsy").removeClass("d-none")
     $("#make-selection-Pixabay").addClass("d-none")
-    $("#showMorePixabay").addClass("d-none")
+
+    // display the correct show more buttons
     $("#showMoreEtsy").removeClass("d-none")
+    $("#showMorePixabay").addClass("d-none")
+    
+    // showing the next page button and removing the currnet page button
+    $("#nextPageToEventbrite").removeClass("d-none");
+    $("#nextPageToEtsy").addClass("d-none");
+    
 
     // creating the holder for Etsy content
     imageContainer = $("#TBDforWhere");
@@ -247,7 +259,7 @@ function displayEtsy(arr) {
     for (i = 0; i < 4; i++) {
         imageCol = $("<div class='col-sm'>");
         imageCard = $("<div class='image-card-etsy'>")
-            imageCard.addClass("card etsyPicked");
+            imageCard.addClass("card-img-top etsyPicked");
             imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_170x135));
             imageCard.attr("data-url", arr[i].url);
             imageCard.attr("data-price", arr[i].price);
@@ -273,10 +285,9 @@ function displayEtsy(arr) {
 
 // run API for Etsy data
 function getDataEtsy() {
-    // showing the next page button and removing the currnet page button
-    $("#nextPageToEtsy").addClass("d-none");
-    $("#nextPageToEventbrite").removeClass("d-none");
-    
+    // empty the contents of the container
+    $("#TBDforWhere").empty();
+
     // set variables for ETSY ajax query
     var api_key_Etsy = "7u4gcw7pr0m2knv9opn4f5h6";
     var interestEtsy = userData.interest;

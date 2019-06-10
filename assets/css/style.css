@@ -44,10 +44,12 @@ body, html {
 
 .title-for-section  {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: red;
 }
 
 .image-card-etsy {
   /* containg the image */
+  width: 100%;
 }
 
 .body-card-etsy {
