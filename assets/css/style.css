@@ -6,12 +6,20 @@
 */
 
 .title {
-  padding-top: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
-  font-family: 'Petit Formal Script', cursive;
-  font-weight: bold;
-  font-size: 4em;
-  color: rgb(252, 252, 252)
+  font-family: 'Lobster', cursive;
+  font-size: 90pt;
+  color: rgb(252, 252, 252);
+}
+
+.title2 {
+  padding-top: 10px;
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 40pt;
+  color: rgb(252, 252, 252);
 }
 
 .subtitle {
@@ -135,4 +143,13 @@ body, html {
 }
 
 
-/* ================================================== */
+
+ .startBtn {
+  position:absolute; 
+  transition: .5s ease;
+  top: 72%; 
+  right: 43%;
+  background-color: magenta;
+  font-family: 'Lobster', cursive;
+  font-size: 20pt;
+}
