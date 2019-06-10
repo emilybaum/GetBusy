@@ -16,7 +16,7 @@ var eventbriteSelected = false;
 
 // what option the user picked
 var pixabayPicked = {
-    src: "",
+    dataImg: "",
 };
 
 var etsyPicked = {
@@ -35,12 +35,56 @@ var eventbritePicked = {
 };
 
 
-$(".pixabayToPick").on("click", function(){
-  pixabaySelected = true;
-  alert("Selection was made")
+// USER SELECTION MADE for Pixabay
+$(document).on("click", ".pixabayToPick", function() {
+    pixabaySelected = true;
+
+    dataImg = $(".pixabayToPick").attr("data-img")
+        pixabayPicked.dataImg = dataImg
+
+    console.log(pixabayPicked)
+    alert("Selection was made for Pixabay")
 });
 
-// button click at end of form
+// USER SELECTION for Etsy
+$(document).on("click", ".etsyPicked", function() {
+    etsySelected = true;
+
+    dataImg = $(".etsyPicked").attr("data-img");
+        etsyPicked.dataImg = dataImg
+    dataUrl = $(".etsyPicked").attr("data-url");
+        etsyPicked.dataUrl = dataUrl
+    dataPrice = $(".etsyPicked").attr("data-price");
+        etsyPicked.dataPrice = dataPrice
+    dataTitle = $(".etsyPicked").attr("data-title");
+        etsyPicked.dataTitle = dataTitle
+    
+    console.log(etsyPicked)
+    alert("Selection was made for Etsy")
+})
+
+
+// USER SELECTION for Eventbrite
+$(document).on("click", ".eventbritePicked", function() {
+    eventbriteSelected = true;
+
+    dataImg = $(".eventbritePicked").attr("data-img");
+        eventbritePicked.dataImg = dataImg
+    dataName = $(".eventbritePicked").attr("data-name");
+        eventbritePicked.dataName = dataName
+    dataSummary = $(".eventbritePicked").attr("data-summary");
+        eventbritePicked.dataSummary = dataSummary
+    dataUrl = $(".eventbritePicked").attr("data-url");
+        eventbritePicked.dataUrl = dataUrl
+
+    console.log(eventbritePicked)
+    alert("Selection was made Eventbrite")
+})
+
+
+
+
+// Submit button click at end of form
 $(document).on("click", "#TBDforButton", collectUserData)
 
 // function to collect the data that is added by the user and feeds into the object
@@ -55,14 +99,6 @@ function collectUserData() {
     $("#showMorePixabay").removeClass("d-none")
     $("#user-input").addClass("d-none")
 }
-
-// USER SELECTION MADE
-function whenPixabayPicked() {
-    
-}
-
-
-
 
 
 // START PIXABAY ==================================================================
@@ -111,9 +147,11 @@ function displayPixabay(arr) {
         var pixabayDiv = $("<div class='card pixabayToPick'>")
         var image = arr[i].webformatURL;
 
+        // adding the image data to the card so that is can be accessiable in the object for each user selection
+        pixabayDiv.attr("data-img", image);
+
         var displayImage = $("<img class='card-image-top img-card-pixabay'>");
         displayImage.attr("src", image)
-            displayImage.attr("data-img", image);
         pixabayDiv.append(displayImage)
         imageCol.append(pixabayDiv)
         imageRow.append(imageCol)
