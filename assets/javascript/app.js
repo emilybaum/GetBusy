@@ -36,6 +36,13 @@ var etsySelected = false;
 var eventbriteSelected = false;
 
 // what option the user picked
+var inviteObject = {
+    date: "",
+    pixabay: "",
+    etsy: "",
+    eventbrite: "",
+}
+
 var pixabayPicked = {
     dataImg: "",
 };
@@ -393,4 +400,41 @@ function getDataEtsy() {
 };
 // END ETSY ==================================================================
 
-    
+// FIREBASE
+var firebaseConfig = {
+apiKey: "AIzaSyCl_zK8X9G3zwJpQoH2v5WtBm_8qNnBsuY",
+authDomain: "thissociety-38389.firebaseapp.com",
+databaseURL: "https://thissociety-38389.firebaseio.com",
+projectId: "thissociety-38389",
+storageBucket: "thissociety-38389.appspot.com",
+messagingSenderId: "684771717578",
+appId: "1:684771717578:web:938d3aa5c1ed7d53"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+
+// INVITE PAGE ==================================================================
+$("#nextPageToInvite").on("click", function(){
+    inviteObject.date = Date();
+    inviteObject.pixabay = pixabayPicked;
+    inviteObject.etsy = etsyPicked;
+    inviteObject.eventbrite = eventbritePicked,
+    console.log(inviteObject);
+    console.log(userData);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    localStorage.setItem("inviteObject", JSON.stringify(inviteObject));
+    database.ref().push({
+        userDataFB: userData,
+        invite: inviteObject,
+    })
+});
+
+// function renderInvite() {
+// userData = JSON.stringify(localStorage.getItem("userData"));
+// console.log(userData);
+// inviteObject = JSON.stringify(localStorage.getItem("inviteObject"));
+// console.log(inviteObject);
+// $("#invite-line").text(userData.userName + ", will you go out with me?")
+// };
+
