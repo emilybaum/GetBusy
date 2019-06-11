@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/typeit@v6/dist/typeit.min.js"></script>
+
     <title>GetBusy</title>
 </head>
 <body>
     <div class="jumbotron jumbotron-fluid getbusy-background">
         <div class="container">
             <h1 class="display-4 text-center getbusy-title">Get Busy (make a logo?)</h1>
-            <p class="lead text-center getbusy-subtext">The UnDating Experience... stop dating and start living</p>
+            <p class="lead text-center"><span id="getbusy-subtext"></span></p>
         </div>
     </div>
     <div class="container">
@@ -53,9 +54,9 @@
             </div> <!-- end column for form -->
         </div> <!-- end row for form -->
 
-        <h1 id="make-selection-Pixabay" class="title-for-section d-none">Pick an image that brings you joy</h1>
-        <h1 id="make-selection-Etsy" class="title-for-section d-none">What gift would you like for yourself?</h1>
-        <h1 id="make-selection-Eventbrite" class="title-for-section d-none">Click an event you would like to attend!</h1>
+        <h1 id="make-selection-Pixabay" class="d-none"><span class="title-for-section">Pick an image that brings you joy</span></h1>
+        <h1 id="make-selection-Etsy" class="d-none"><span class="title-for-section">What gift would you like for yourself?</span></h1>
+        <h1 id="make-selection-Eventbrite" class="d-none"><span class="title-for-section">Click an event you would like to attend!</span></h1>
 
         <div id="TBDforWhere"></div>
         
@@ -72,6 +73,8 @@
         <button id="nextPageToEventbrite" type="submit" class="btn btn-primary d-none">Next to Eventbrite</button>
         <button id="nextPageToInvite" type="submit" class="btn btn-primary d-none">Next to Eventbrite</button>
     </div>
+
+    
     <script src="assets/javascript/app.js "></script>
 </body>
 </html>
