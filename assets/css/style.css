@@ -78,9 +78,6 @@ body, html {
 
 
 /* ALL CARDS ========================================*/
-/* .card-img-top {
-  margin: 1px;
-} */
 
 .selection-border {
   border: 5px solid red;
@@ -94,10 +91,7 @@ body, html {
   width: 100%;
   border-radius: 2px;
 }
-
-.pixabayToPick {
-  /* z-index: 1; */
-}
+  
 /* ================================================== */
 
 

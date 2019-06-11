@@ -1,3 +1,24 @@
+// shows the text in the sub title on html
+new TypeIt('#getbusy-subtext', {
+  speed: 50,
+  startDelay: 900
+})
+.type('Stop scrolling in search of your Boo')
+.pause(300)
+.delete(8)
+.pause(250)
+.type('a Soulmate')
+.pause(750)
+.options({speed: 100, deleteSpeed: 75})
+.delete(10)
+.pause(750)
+.type('The One')
+.pause(600)
+.options({speed: 100, deleteSpeed: 75})
+// .delete(7)
+.pause(750)
+.type('... and give yourself what you really want')
+.go();
 
 
 // User Object for data collected from user in initial form
@@ -94,7 +115,16 @@ $(document).on("click", ".eventbritePicked", function() {
 
 
 // Submit button click at end of form
-$(document).on("click", "#TBDforButton", collectUserData)
+// $(document).on("click", "#TBDforButton", collectUserData)
+
+$(document).on("click", "#TBDforButton", function() {
+    // if ( 
+    //     // check whether form is validated
+    // )
+
+    collectUserData()
+})
+
 
 // function to collect the data that is added by the user and feeds into the object
 function collectUserData() {
@@ -117,6 +147,9 @@ var newImagesArr = [];
 
 // runs the ajax request to get images from PIXABAY
 function getDataPixabay() {
+    // display title for Pixabay
+    $("#make-selection-Pixabay").removeClass("d-none")
+
     // display next button -- Etsy
     $("#nextPageToEtsy").removeClass("d-none")
 
@@ -142,9 +175,6 @@ $("#showMorePixabay").on("click", function (event) {
 
 // show Pixabay images on the screen
 function displayPixabay(arr) {
-    // display title on the page
-    $("#make-selection-Pixabay").removeClass("d-none")
-
     // display show more button for Pixabay
     $("#showMorePixabay").removeClass("d-none")
 
@@ -205,9 +235,6 @@ $("#showMoreEventbrite").on("click", function (event) {
 // function parse JSON object and append to page
 var newEventArr = [];
 function displayEvents(arr) {
-    // display title on the page
-    $("#make-selection-Eventbrite").removeClass("d-none")
-    $("#make-selection-Etsy").addClass("d-none")
 
     // display the show more events button
     $("#showMoreEventbrite").removeClass("d-none")
@@ -256,6 +283,10 @@ function displayEvents(arr) {
 function getDataEventbrite(){
     // empty the contents of the container
     $("#TBDforWhere").empty();
+    
+    // display title on the page
+    $("#make-selection-Eventbrite").removeClass("d-none")
+    $("#make-selection-Etsy").addClass("d-none")
 
     var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
     var searchTerm = userData.interest;
@@ -291,10 +322,6 @@ var newEtsyArr = [];
 
 // put Etsy items on the page
 function displayEtsy(arr) {
-    // makes the Show More button visable
-    $("#make-selection-Etsy").removeClass("d-none")
-    $("#make-selection-Pixabay").addClass("d-none")
-
     // display the correct show more buttons
     $("#showMoreEtsy").removeClass("d-none")
     $("#showMorePixabay").addClass("d-none")
@@ -338,6 +365,10 @@ function displayEtsy(arr) {
 function getDataEtsy() {
     // empty the contents of the container
     $("#TBDforWhere").empty();
+    
+    // display the title for Etsy
+    $("#make-selection-Etsy").removeClass("d-none")
+    $("#make-selection-Pixabay").addClass("d-none")
 
     // set variables for ETSY ajax query
     var api_key_Etsy = "7u4gcw7pr0m2knv9opn4f5h6";
