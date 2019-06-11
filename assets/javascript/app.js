@@ -34,55 +34,61 @@ var eventbritePicked = {
     dataUrl: "",
 };
 
+// displays a border on the most recent user selection
+function addSelectionBorder(clicked) {
+   clicked.addClass("selection-border")
+}
 
-// USER SELECTION MADE for Pixabay
-$(document).on("click", ".pixabayToPick", function() {
-    console.log($(this))
+// USER SELECTION FOR PIXABAY
+$(document).on("click", ".pixabayPicked", function() {
     pixabaySelected = true;
 
-    dataImg = $(".pixabayToPick").attr("data-img")
+    dataImg = $(this).attr("data-img")
         pixabayPicked.dataImg = dataImg
 
-    console.log(pixabayPicked)
-    alert("Selection was made for Pixabay")
+    $(".pixabayPicked").removeClass("selection-border")
+    
+    // trigger the border to be added for last selection
+    addSelectionBorder($(this))
 });
 
 // USER SELECTION for Etsy
 $(document).on("click", ".etsyPicked", function() {
-    console.log($(this))
     etsySelected = true;
 
-    dataImg = $(".etsyPicked").attr("data-img");
+    dataImg = $(this).attr("data-img");
         etsyPicked.dataImg = dataImg
-    dataUrl = $(".etsyPicked").attr("data-url");
+    dataUrl = $(this).attr("data-url");
         etsyPicked.dataUrl = dataUrl
-    dataPrice = $(".etsyPicked").attr("data-price");
+    dataPrice = $(this).attr("data-price");
         etsyPicked.dataPrice = dataPrice
-    dataTitle = $(".etsyPicked").attr("data-title");
+    dataTitle = $(this).attr("data-title");
         etsyPicked.dataTitle = dataTitle
     
-    console.log(etsyPicked)
-    alert("Selection was made for Etsy")
+    $(".etsyPicked").removeClass("selection-border")
+    
+    // trigger the border to be added for last selection
+    addSelectionBorder($(this))
 })
 
 
 // USER SELECTION for Eventbrite
 $(document).on("click", ".eventbritePicked", function() {
-    console.log($(this))
     eventbriteSelected = true;
 
-    dataImg = $(".eventbritePicked").attr("data-img");
+    dataImg = $(this).attr("data-img");
         eventbritePicked.dataImg = dataImg
-    dataName = $(".eventbritePicked").attr("data-name");
+    dataName = $(this).attr("data-name");
         eventbritePicked.dataName = dataName
-    dataSummary = $(".eventbritePicked").attr("data-summary");
+    dataSummary = $(this).attr("data-summary");
         eventbritePicked.dataSummary = dataSummary
-    dataUrl = $(".eventbritePicked").attr("data-url");
+    dataUrl = $(this).attr("data-url");
         eventbritePicked.dataUrl = dataUrl
 
-    console.log(eventbritePicked)
-    console.log(eventbritePicked.dataImg)
-    alert("Selection was made Eventbrite")
+    $(".eventbritePicked").removeClass("selection-border")
+    
+    // trigger the border to be added for last selection
+    addSelectionBorder($(this))
 })
 
 
@@ -146,8 +152,8 @@ function displayPixabay(arr) {
     imageRow = $("<div class='row'>")
 
     for (var i = 0; i < numOfImages; i++) {
-        var imageCol = $("<div class='col-sm'>")
-        var pixabayDiv = $("<div class='card pixabayToPick'>")
+        var imageCol = $("<div class='col-sm mb-3'>")
+        var pixabayDiv = $("<div class='card pixabayPicked'>")
         var image = arr[i].webformatURL;
 
         // adding the image data to the card so that is can be accessiable in the object for each user selection
@@ -192,7 +198,9 @@ function resetPage() {
 // user clicks Next to trigger Eventbrite
 $("#nextPageToEventbrite").on("click", getDataEventbrite)
 
-// set variables for EVENTBRITE ajax query
+$("#showMoreEventbrite").on("click", function (event) {
+    displayEvents(newEventArr);
+})
 
 // function parse JSON object and append to page
 var newEventArr = [];
@@ -214,7 +222,7 @@ function displayEvents(arr) {
         eventRow = $("<div class='row'>");
 
     for (i = 0; i < 4; i++) {
-        eventCol = $("<div class='col-sm'>");
+        eventCol = $("<div class='col-md mb-3'>");
         eventCard = $("<div>");
             eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
             console.log(arr)
@@ -273,7 +281,7 @@ function getDataEventbrite(){
 // trigger when the next button has been clicked on the previous page
 $("#nextPageToEtsy").on("click", getDataEtsy)
 
-// click handler for showMoreEventbrite button to load more ETSY
+// click handler for showMoreEtsy button to load more ETSY
 $("#showMoreEtsy").on("click", function (event) {
     displayEtsy(newEtsyArr);
 })
@@ -300,7 +308,7 @@ function displayEtsy(arr) {
     imageContainer = $("#TBDforWhere");
     imageRow = $("<div class='row'>");
     for (i = 0; i < 4; i++) {
-        imageCol = $("<div class='col-sm'>");
+        imageCol = $("<div class='col-md mb-3'>");
         imageCard = $("<div>")
             imageCard.addClass("card-img-top image-card-etsy etsyPicked");
             imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_fullxfull));

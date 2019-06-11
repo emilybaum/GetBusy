@@ -78,13 +78,14 @@ body, html {
 
 
 /* ALL CARDS ========================================*/
-.card-img-top {
+/* .card-img-top {
   margin: 1px;
+} */
+
+.selection-border {
+  border: 5px solid red;
 }
 
-.col-sm {
-  /* not sure if we need this */
-}
 /* ================================================== */
 
 
