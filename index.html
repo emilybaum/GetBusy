@@ -27,30 +27,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form id="user-input" class="mx-auto">
+                <form name="interestForm" id="user-input" class="mx-auto">
                     <!-- Name -->
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="userName-input" placeholder="Your name">
+                        <input type="text" class="form-control" name="userNameInput" id="userName-input" placeholder="Your name">
                     </div>
                     
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email-input">Email address</label>
-                        <input type="email" class="form-control" id="email-input" placeholder="Enter email">
+                        <input type="email" class="form-control" name="emailInput" id="email-input" placeholder="Enter email">
                     </div>
                     
                     <!-- Postal code -->
                     <div class="form-group">
                         <label for="postalCode">Postal Code</label>
-                        <input type="number" class="form-control" id="postalCode-input" placeholder="i.e. 20194">
+                        <input type="number" class="form-control" name="postalCodeInput" id="postalCode-input" placeholder="i.e. 20194">
                         <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
                     </div>
                     
                     <!-- Interest -->
                     <div class="form-group">
                         <label for="interest">What are you interested in?</label>
-                        <input type="text" class="form-control" id="interest-input" placeholder="i.e. Knitting">
+                        <input type="text" class="form-control" name="interestInput" id="interest-input" placeholder="i.e. Knitting">
                     </div>
                     
                     <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
