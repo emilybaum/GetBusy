@@ -115,15 +115,36 @@ $(document).on("click", ".eventbritePicked", function() {
 
 
 // Submit button click at end of form
-// $(document).on("click", "#TBDforButton", collectUserData)
+$(document).on("click", "#TBDforButton", validateForm)
 
-$(document).on("click", "#TBDforButton", function() {
-    // if ( 
-    //     // check whether form is validated
-    // )
+// validate that the user is entering contnet and that there are no blank fields
+function validateForm() {
+    var userNameField = document.forms["interestForm"]["userNameInput"].value;
+    var emailField = document.forms["interestForm"]["emailInput"].value.indexOf("@");
+    var postalCodeField = document.forms["interestForm"]["postalCodeInput"].value;
+    var interestField = document.forms["interestForm"]["interestInput"].value;
 
-    collectUserData()
-})
+    if (userNameField === "") {
+        alert("Name must be filled out");
+        return false;
+    }
+    if (emailField === -1) {
+        alert("Email must be filled out");
+        return false;
+    }
+    if (postalCodeField.length !== 5) {
+        alert("You must enter valid postal code");
+        return false;
+    }
+    if (interestField === "") {
+        alert("Postal Code must be filled out");
+        return false;
+    }
+    
+    else {
+        collectUserData()
+    }
+}
 
 
 // function to collect the data that is added by the user and feeds into the object
