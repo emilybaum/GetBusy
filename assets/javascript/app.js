@@ -119,12 +119,14 @@ $(document).on("click", "#TBDforButton", validateForm)
 
 // validate that the user is entering contnet and that there are no blank fields
 function validateForm() {
+    
     var userNameField = document.forms["interestForm"]["userNameInput"].value;
     var emailField = document.forms["interestForm"]["emailInput"].value.indexOf("@");
     var postalCodeField = document.forms["interestForm"]["postalCodeInput"].value;
     var interestField = document.forms["interestForm"]["interestInput"].value;
 
     if (userNameField === "") {
+        $("#invalid-input-name").removeAttr("hidden")
         alert("Name must be filled out");
         return false;
     }
@@ -142,6 +144,7 @@ function validateForm() {
     }
     
     else {
+        $("<small>Looks Good</small>").replaceAll(".validation")
         collectUserData()
     }
 }
