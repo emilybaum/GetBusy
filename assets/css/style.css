@@ -148,3 +148,14 @@ body, html {
   font-family: 'Lobster', cursive;
   font-size: 20pt;
 }
+
+/* SEARCHPAGE STYLES =========================== */
+#search-again {
+  float: right;
+  margin: 0 auto;
+};
+
+#search-results-h6 {
+  clear: right;
+  padding: 20px 0px;
+}
