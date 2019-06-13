@@ -4,29 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Marck+Script&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/typeit@v6/dist/typeit.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+    
     <title>GetBusy</title>
-    <style>
-    img {
-        width: 200px;
-        height: auto;
-    }
-    </style>
+
 </head>
-<body>
-    <h3 id="invite-line"></h3>
-    <div class="card" id="pixabay-display">
-    </div>
-    <div class="card" id="etsy-display">
-    </div>
-    <div class="card" id="eventbrite-display">
-    </div>
+<body class="invite-page-background">
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">Default</a>
+        </nav>
+    </header>
+    <div>
+        <div class="container mt-3 pt-5 pb-3 bd-amber border-outset invite-border text-center">
+            
+            <div class="row justify-content-center">
+                <div class="text-center col-sm-12">
+                    <h3 class="mb-5 invitationNameText"><span id="invite-line"></span>, will you go out with me?</h3>
+                </div>
+            </div>
+
+            <div class="row justify-content-around">
+                <div class="col-sm-3">
+                    <h1 class="text-center invitationContentText">Be inspired</h1>
+                    <div class="card card-eb" id="pixabay-display">
+                        <h5>by your interest in <span id="userInterest-invite"></span></h5>
+                    </div>
+                    
+                </div>
+
+                <div class="col-sm-3">
+                    <h1 class="text-center invitationContentText">Get a yourself a gift</h1>
+                    <div class="card card-eb" id="etsy-display"></div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h1 class="text-center invitationContentText">Take youself out</h1>
+                    <div class="card card-eb" id="eventbrite-display"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-sm-4 text-center">
+                    <!-- this need to be a button -->
+                    Yes
+                </div>
+                <div class="col-sm-4 text-center">
+                    <!-- this needs to be a button -->
+                    No
+                </div>
+            </div>
+
+            <div class="display-4 text-center getbusy-title animated pulse">
+                GetBusy
+            </div>
+            
+        </div> <!-- end container -->
+
+    
+
+    <footer class="text-center">
+        This is the footer
+    </footer>
+
     <script src="assets/javascript/app.js "></script>
     <script src="assets/javascript/app-invite.js"></script>
 </body>

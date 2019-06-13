@@ -3,7 +3,17 @@
 #cd5360 #d56 "indian red" hsl(353,54,56) rgb(205,83,96)
 #b37d4e #b85 "peru" hsl(27,39,50) rgb(179,125,78)
 #438496 #489 "other blue" hsl(193,38,42) rgb(67,132,150)
+
+#F8F9FA -- lightest gray
+#E4E4E4 -- light gray
 */
+
+/* 
+font-family: 'Lobster', cursive;
+font-family: 'Marck Script', cursive;
+font-family: 'Lato', sans-serif;
+ */
+
 
 .title {
   padding-top: 10px;
@@ -28,7 +38,23 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.startBtn {
+  position:absolute; 
+  transition: .5s ease;
+  top: 72%; 
+  right: 43%;
+  background-color: magenta;
+  font-family: 'Lobster', cursive;
+  font-size: 20pt;
+}
+
+.space-holder {
+  height: 30vh;
+}
+
+
 .getbusy-title {
+  font-family: 'Lobster', cursive;
   color: #286da8;
 }
 
@@ -58,8 +84,9 @@
 body, html {
     height: 100%;
 }
+
   
-.background { 
+.background {
   /* The image used */
   background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
   /* background-image: url("../assets/images/giphy-beach.gif"); */
@@ -74,6 +101,14 @@ body, html {
   background-size: cover;
 }
 
+/* this will keep the image in the center of the page, but does not fill the whole screen */
+/* body {
+  background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  
+} */
 
 
 .title-for-section  {
@@ -142,15 +177,44 @@ body, html {
 .image-img-eventbrite {
   width: 100%;
 }
+/* ================================================== */
 
 
-
- .startBtn {
-  position:absolute; 
-  transition: .5s ease;
-  top: 72%; 
-  right: 43%;
-  background-color: magenta;
-  font-family: 'Lobster', cursive;
-  font-size: 20pt;
+/* INVITATION */
+.invite-page-background {
+  background-color: #F8F9FA;
+  background-image: url("../../assets/images/giphy-sparkle.gif");
+  background-repeat: repeat-x;
 }
+.invitationNameText {
+  font-family: 'Marck Script', cursive;
+  font-size: 3em;
+  color: #F0A30A;
+}
+
+.invitationContentText {
+  font-family: 'Lobster', cursive;
+  font-size: 2em;
+  color: #8C004A;
+}
+
+.invite-border {
+  border: 10px solid;
+  background-color: white;
+}
+
+.card-eb {
+
+}
+
+.invite-img {
+  width: 100%;
+}
+
+.invite-card-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+
