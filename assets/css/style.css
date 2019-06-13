@@ -183,7 +183,7 @@ body, html {
 /* INVITATION */
 .invite-page-background {
   background-color: #F8F9FA;
-  background-image: url("../../assets/images/giphy-sparkle.gif");
+  /* background-image: url("../../assets/images/giphy-sparkle.gif"); */
   background-repeat: repeat-x;
 }
 .invitationNameText {
