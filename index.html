@@ -16,20 +16,20 @@
 <body>
     <div class="jumbotron jumbotron-fluid getbusy-background">
         <div class="container">
-            <h1 class="display-4 text-center getbusy-title">Get Busy (make a logo?)</h1>
+            <h1 class="display-4 text-center getbusy-title">Get Busy</h1>
             <p class="lead text-center"><span id="getbusy-subtext"></span></p>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <form name="interestForm" id="user-input" class="mx-auto">
                     <!-- Name -->
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="userNameInput" id="userName-input" placeholder="Your name">
-                        <small class="validation invalid-input-name" hidden>
-                            This field is required
+                        <small class="validation" id="invalid-input-name" hidden>
+                            Wait, what's your name?
                         </small>
                     </div>
                     
@@ -37,24 +37,38 @@
                     <div class="form-group">
                         <label for="email-input">Email address</label>
                         <input type="email" class="form-control" name="emailInput" id="email-input" placeholder="Enter email">
+                        <small class="validation" id="invalid-input-email" hidden>
+                            Please enter a valid email address
+                        </small>
                     </div>
                     
                     <!-- Postal code -->
                     <div class="form-group">
                         <label for="postalCode">Postal Code</label>
                         <input type="number" class="form-control" name="postalCodeInput" id="postalCode-input" placeholder="i.e. 20194">
-                        <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
+                        <small class="validation" id="invalid-input-postalCode" hidden>
+                            You need this to see relevant events in the right area
+                        </small>
                     </div>
                     
                     <!-- Interest -->
                     <div class="form-group">
                         <label for="interest">What are you interested in?</label>
                         <input type="text" class="form-control" name="interestInput" id="interest-input" placeholder="i.e. Knitting">
+                        <small class="validation" id="invalid-input-interest" hidden>
+                            Enter your interest to GetBusy
+                        </small>
                     </div>
                     
                     <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
                 </form>
             </div> <!-- end column for form -->
+
+            <div class="col-md-6"> <!-- sign in option -->
+            <p class="text-center">Sign in</p>
+
+            </div>
+
         </div> <!-- end row for form -->
 
         <h1 id="make-selection-Pixabay" class="d-none"><span class="title-for-section">Pick an image that brings you joy</span></h1>

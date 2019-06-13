@@ -127,24 +127,31 @@ function validateForm() {
 
     if (userNameField === "") {
         $("#invalid-input-name").removeAttr("hidden")
-        alert("Name must be filled out");
         return false;
     }
+    if (userNameField !== "") {
+        $("#invalid-input-name").attr("hidden")
+    }
+
     if (emailField === -1) {
-        alert("Email must be filled out");
+        $("#invalid-input-email").removeAttr("hidden")
         return false;
     }
+
     if (postalCodeField.length !== 5) {
-        alert("You must enter valid postal code");
+        $("#invalid-input-postalCode").removeAttr("hidden")
         return false;
     }
+    if (postalCodeField.length === 5) {
+        $("#invalid-input-postalCode").attr("hidden")
+    }
+
     if (interestField === "") {
-        alert("Postal Code must be filled out");
+        $("#invalid-input-interest").removeAttr("hidden")
         return false;
     }
     
     else {
-        $("<small>Looks Good</small>").replaceAll(".validation")
         collectUserData()
     }
 }
