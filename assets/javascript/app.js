@@ -126,25 +126,35 @@ $(document).on("click", "#TBDforButton", validateForm)
 
 // validate that the user is entering contnet and that there are no blank fields
 function validateForm() {
+    
     var userNameField = document.forms["interestForm"]["userNameInput"].value;
     var emailField = document.forms["interestForm"]["emailInput"].value.indexOf("@");
     var postalCodeField = document.forms["interestForm"]["postalCodeInput"].value;
     var interestField = document.forms["interestForm"]["interestInput"].value;
 
     if (userNameField === "") {
-        alert("Name must be filled out");
+        $("#invalid-input-name").removeAttr("hidden")
         return false;
     }
+    if (userNameField !== "") {
+        $("#invalid-input-name").attr("hidden")
+    }
+
     if (emailField === -1) {
-        alert("Email must be filled out");
+        $("#invalid-input-email").removeAttr("hidden")
         return false;
     }
+
     if (postalCodeField.length !== 5) {
-        alert("You must enter valid postal code");
+        $("#invalid-input-postalCode").removeAttr("hidden")
         return false;
     }
+    if (postalCodeField.length === 5) {
+        $("#invalid-input-postalCode").attr("hidden")
+    }
+
     if (interestField === "") {
-        alert("Postal Code must be filled out");
+        $("#invalid-input-interest").removeAttr("hidden")
         return false;
     }
     

@@ -6,56 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
-=======
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@v6/dist/typeit.min.js"></script>
 
     <title>GetBusy</title>
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Default</a>
+        </nav>
+    </header>   
+    
     <div class="jumbotron jumbotron-fluid getbusy-background">
         <div class="container">
-            <h1 class="display-4 text-center getbusy-title">Get Busy (make a logo?)</h1>
+            <h1 class="display-4 text-center getbusy-title animated bounceInDown">GetBusy</h1>
             <p class="lead text-center"><span id="getbusy-subtext"></span></p>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <form name="interestForm" id="user-input" class="mx-auto">
+            <div class="col-md-6">
+                <form name="interestForm" id="user-input" class="mx-auto ">
                     <!-- Name -->
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="userNameInput" id="userName-input" placeholder="Your name">
+                        <small class="validation" id="invalid-input-name" hidden>
+                            Wait, what's your name?
+                        </small>
                     </div>
                     
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email-input">Email address</label>
                         <input type="email" class="form-control" name="emailInput" id="email-input" placeholder="Enter email">
+                        <small class="validation" id="invalid-input-email" hidden>
+                            Please enter a valid email address
+                        </small>
                     </div>
                     
                     <!-- Postal code -->
                     <div class="form-group">
                         <label for="postalCode">Postal Code</label>
                         <input type="number" class="form-control" name="postalCodeInput" id="postalCode-input" placeholder="i.e. 20194">
-                        <div id="reject-postalCode" class="d-none">Please enter a valid postal code</div>
+                        <small class="validation" id="invalid-input-postalCode" hidden>
+                            You need this to see relevant events in the right area
+                        </small>
                     </div>
                     
                     <!-- Interest -->
                     <div class="form-group">
                         <label for="interest">What are you interested in?</label>
                         <input type="text" class="form-control" name="interestInput" id="interest-input" placeholder="i.e. Knitting">
+                        <small class="validation" id="invalid-input-interest" hidden>
+                            Enter your interest to GetBusy
+                        </small>
                     </div>
                     
                     <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
                 </form>
             </div> <!-- end column for form -->
+
+            <div class="col-md-6"> <!-- sign in option -->
+            <p class="text-center">Sign in</p>
+
+            </div>
+
         </div> <!-- end row for form -->
 
         <h1 id="make-selection-Pixabay" class="d-none"><span class="title-for-section">Pick an image that brings you joy</span></h1>
@@ -76,6 +100,10 @@
         <button id="nextPageToEtsy" type="submit" class="btn btn-primary d-none">Next to Etsy</button>
         <button id="nextPageToEventbrite" type="submit" class="btn btn-primary d-none">Next to Eventbrite</button>
         <a href="invite.html"><button id="nextPageToInvite" type="submit" class="btn btn-primary d-none">Generate Invite</button></a>
+    
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">Fixed bottom</a>
+    </nav>
     </div>
 
     
