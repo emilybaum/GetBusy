@@ -421,7 +421,7 @@ function getDataEtsy() {
 };
 // END ETSY ==================================================================
 
-// FIREBASE
+// FIREBASE ==================================================================
 var firebaseConfig = {
 apiKey: "AIzaSyCl_zK8X9G3zwJpQoH2v5WtBm_8qNnBsuY",
 authDomain: "thissociety-38389.firebaseapp.com",
@@ -434,9 +434,7 @@ appId: "1:684771717578:web:938d3aa5c1ed7d53"
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-
-// INVITE PAGE ==================================================================
-$("#nextPageToInvite").on("click", function(){
+function storeData() {
     inviteObject.date = Date();
     inviteObject.pixabay = pixabayPicked;
     inviteObject.etsy = etsyPicked;
@@ -446,9 +444,71 @@ $("#nextPageToInvite").on("click", function(){
     localStorage.setItem("userData", JSON.stringify(userData));
     localStorage.setItem("inviteObject", JSON.stringify(inviteObject));
     database.ref().push({
-        userDataFB: userData,
-        invite: inviteObject,
+        date: Date(),
+        email: userData.email,
+        name: userData.userName,
+        code: userData.postalCode,
+        interest: userData.interest,
+        pixabay: pixabayPicked,
+        etsy: etsyPicked,
+        eventbrite: eventbritePicked,
     })
+}
+
+// Define interest search variables
+var interestSearch;
+var returnedObjects;
+
+// Create click handler for interest search button
+$("#SearchButton").on("click", function(event) {
+    event.preventDefault();
+    interestSearch = $("#interest-search").val().trim();
+    console.log(interestSearch);
+    $("#search-section").hide();
+    $("#search-table").show();
+    getChild();
+    // displaySearchResults();
+});
+
+// Search Database
+var interestSearch
+function getChild() {
+    database.ref().orderByChild("interest").equalTo(interestSearch).on('value', function (snapshot) {
+        // snapshot would have list of NODES that satisfies the condition
+        returnedObjects = snapshot
+        console.log(returnedObjects.val())
+        // go through each item found and print out the children
+        snapshot.forEach(function(childSnapshot) {
+            $("#full-search-results").append("<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().email + "</td><td>" + childSnapshot.val().date + "</td><td><a href=#>see invite</a></td></tr>"); 
+            // these will be the entire children
+            console.log(childSnapshot.val());
+        });
+        $("#search-results-h6").text("Results for: " + interestSearch);
+    });
+}
+$("#search-table").hide();
+
+// Display search results
+function displaySearchResults() {
+    $("#search-section").hide();
+    $("#search-table").show();
+    console.log(returnedObjects);
+    returnedObjects.forEach(function() {
+        $("#full-search-results").append("<tr><td>" + $(this).name + "</td><td>" + $(this).email + "</td><td>" + $(this).date.toDateString() + "</td><td><a href=#>see invite</a></td></tr>");
+    })
+};
+
+// Click handler for search again buttong
+$("#search-again").on("click", function(){
+    $("#full-search-results").text("");
+    $("#interest-search").val("");
+    $("#search-section").show();
+    $("#search-table").hide();
+})
+
+// INVITE PAGE ==================================================================
+$("#nextPageToInvite").on("click", function(){
+    storeData();
 });
 
 // function renderInvite() {
