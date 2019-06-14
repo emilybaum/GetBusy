@@ -150,7 +150,7 @@ function validateForm() {
         return false;
     }
     if (postalCodeField.length === 5) {
-        $("#invalid-input-postalCode").attr("hidden")
+        $("#invalid-input-postalCode").removeAttr("hidden")
     }
 
     if (interestField === "") {
@@ -173,6 +173,8 @@ function collectUserData() {
     userData.interest = $("#interest-input").val().trim()
     console.log(userData)
     getDataPixabay(userData)
+    $("#big-header").addClass("d-none")
+    $("#small-header").removeClass("d-none")
     $("#showMorePixabay").removeClass("d-none")
     $("#user-input").addClass("d-none")
 }
@@ -260,11 +262,24 @@ function resetPage() {
 // END PIXABAY ==================================================================
 
 
+
+
  
 // START EVENTBRITE ==================================================================
-
 // user clicks Next to trigger Eventbrite
-$("#nextPageToEventbrite").on("click", getDataEventbrite)
+// validation for picking interest and click handler
+$(document).on("click", "#nextPageToEventbrite", validateEtsy)
+
+function validateEtsy() {
+    if (etsySelected === false) {
+        $(".invalid-selection").text("You must make a selection first");
+        return false;
+    }
+    else {
+        $(".invalid-selection").empty();
+        getDataEventbrite();
+    }
+}
 
 $("#showMoreEventbrite").on("click", function (event) {
     displayEvents(newEventArr);
@@ -368,7 +383,20 @@ function getDataEventbrite(){
 
 // START ETSY ==================================================================
 // trigger when the next button has been clicked on the previous page
-$("#nextPageToEtsy").on("click", getDataEtsy)
+// validation for picking interest and click handler
+$(document).on("click", "#nextPageToEtsy", validatePixabay)
+
+function validatePixabay() {
+    if (pixabaySelected === false) {
+        $(".invalid-selection").text("You must make a selection first");
+        return false;
+    }
+    else {
+        $(".invalid-selection").empty();
+        getDataEtsy();
+    }
+}
+
 
 // click handler for showMoreEtsy button to load more ETSY
 $("#showMoreEtsy").on("click", function (event) {
@@ -464,6 +492,25 @@ appId: "1:684771717578:web:938d3aa5c1ed7d53"
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
+
+// INVITE PAGE ==================================================================
+// validation for picking interest and click handler
+$(document).on("click", "#nextPageToInvite", validateEventbrite)
+
+function validateEventbrite() {
+    if (eventbriteSelected === false) {
+        $(".invalid-selection").text("You must make a selection first");
+        return false;
+    }
+    else {
+        $(".invalid-selection").empty();
+        generateInvite();
+    }
+}
+
+// $("#nextPageToInvite").on("click", function(){
+    
+function generateInvite() {
 function storeData() {
     inviteObject.date = Date();
     inviteObject.pixabay = pixabayPicked;
