@@ -28,20 +28,26 @@ function renderInvite() {
 
     // etsy
     var etsyInviteImg = ("<img class='invite-img' src=" + inviteObject.etsy.dataImg + ">")
-    var etsyInviteDetails1 = ("<h5 class='invite-card-text'>" + inviteObject.etsy.dataTitle + "</h5>") 
+    var etsyInviteDetails1 = ("<h5 class='invite-title invite-card-text'>" + inviteObject.etsy.dataTitle + "</h5>") 
     var etstInvitePrice = ("<h5 class='price-card-etsy'>" + "$" + inviteObject.etsy.dataPrice + "</h5>")
-    var fullUrl = ("<h5 class='external-url'>Buy it <a href=" + inviteObject.etsy.dataUrl + "> here </a></h5>")
+    var etsyFullUrl = ("<h5 class='external-url'>Buy it <a target='_blank' href=" + inviteObject.etsy.dataUrl + "> here </a></h5>")
     $("#etsy-display").append(etsyInviteImg)
     $("#etsy-display").append(etsyInviteDetails1)
     $("#etsy-display").append(etstInvitePrice)
-    $("#etsy-display").append(fullUrl)
+    $("#etsy-display").append(etsyFullUrl)
 
 
     // eventbrite
     var eventbriteInviteImg = ("<img class='invite-img' src=" + inviteObject.eventbrite.dataImg + ">")
+    var eventbriteInviteDetails1 = ("<h5 class='invite-title invite-card-text'>" + inviteObject.eventbrite.dataName + "</h5>")
+    var eventbriteFullUrl = ("<h5 class='external-url'>More details <a target='_blank' href=" + inviteObject.eventbrite.dataUrl + "> here </a></h5>")
+    
+    
     $("#eventbrite-display").append(eventbriteInviteImg)
     eventbriteInviteDetails1 = ("<h5 class='invite-card-text'>" + inviteObject.eventbrite.dataName + "</h5>")
     $("#eventbrite-display").append(eventbriteInviteDetails1)
+    $("#eventbrite-display").append(eventbriteFullUrl)
+
     // add link to event
     // add time of event
     // add date of event
