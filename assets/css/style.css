@@ -217,4 +217,13 @@ body, html {
   text-align: center;
 }
 
+/* SEARCHPAGE STYLES =========================== */
+#search-again {
+  float: right;
+  margin: 0 auto;
+};
 
+#search-results-h6 {
+  clear: right;
+  padding: 20px 0px;
+}
