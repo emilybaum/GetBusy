@@ -562,3 +562,29 @@ $("#nextPageToInvite").on("click", function(){
     storeData();
 });
 
+// function renderInvite() {
+// userData = JSON.stringify(localStorage.getItem("userData"));
+// console.log(userData);
+// inviteObject = JSON.stringify(localStorage.getItem("inviteObject"));
+// console.log(inviteObject);
+// $("#invite-line").text(userData.userName + ", will you go out with me?")
+// };
+
+
+function previewFile(){
+    var preview = document.querySelector('img'); //selects the query named img
+    var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
+}
+
+previewFile();  //calls the function named previewFile()
