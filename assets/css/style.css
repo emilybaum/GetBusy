@@ -50,8 +50,8 @@ font-family: 'Lato', sans-serif;
 .startBtn {
   position:absolute; 
   transition: .5s ease;
-  top: 72%; 
-  right: 43%;
+  top: 80%; 
+  right: 50%;
   background-color: magenta;
   font-family: 'Lobster', cursive;
   font-size: 20pt;
@@ -254,3 +254,4 @@ body, html {
   clear: right;
   padding: 20px 0px;
 }
+

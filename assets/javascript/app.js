@@ -285,6 +285,21 @@ $("#showMoreEventbrite").on("click", function (event) {
     displayEvents(newEventArr);
 })
 
+function getNiceDate(string) {
+    var year = string.slice(0, 4);
+    var month = string.slice(5, 7);
+    var day = string.slice(8, 10);
+    var timeHour = string.slice(11, 13)
+    var timeMin = string.slice(14, 16);
+    var time;
+    if (timeHour > 12) {
+        time = (timeHour - 12) + ":" + timeMin + "pm";
+    } else {
+        time = timeHour + ":" + timeMin + "am";
+    };
+    return (month + "/" + day + "/" + year + " at " + time);
+}
+
 // function parse JSON object and append to page
 var newEventArr = [];
 function displayEvents(arr) {
@@ -314,8 +329,13 @@ function displayEvents(arr) {
             eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + "</img>");
         eventCardBody = $("<div>")
             eventCardBody.addClass("card-body")
-            eventCardBody.append("<h5>" + arr[i].name.html + "</h5>");
+                eventCardLink = $("<a target='_blank'>");
+                    eventCardLink.attr("href", arr[i].url);
+                        eventCardTitle = $("<h5>" + arr[i].name.html + "</h5>");
+                    eventCardLink.append(eventCardTitle);
+                eventCardBody.append(eventCardLink);
             eventCardBody.append("<p>" + arr[i].summary + "</p>");
+            eventCardBody.append("<h6 class='date-card-eventbrite'>When: " + getNiceDate(arr[i].start.local));
         eventCard.append(eventCardBody);
         eventCol.append(eventCard)
         eventRow.append(eventCol);
@@ -515,6 +535,7 @@ function storeData() {
 // Define interest search variables
 var interestSearch;
 var returnedObjects;
+var returnedChildren;
 
 // Create click handler for interest search button
 $("#SearchButton").on("click", function(event) {
@@ -531,21 +552,39 @@ $("#SearchButton").on("click", function(event) {
 var interestSearch
 function getChild() {
     database.ref().orderByChild("interest").equalTo(interestSearch).on('value', function (snapshot) {
-        // snapshot would have list of NODES that satisfies the condition
-        returnedObjects = snapshot
-        console.log(returnedObjects.val())
-        // go through each item found and print out the children
+        // Snapshot returns nodes that that match interest
+        // Loop through each item found and print out the children
         snapshot.forEach(function(childSnapshot) {
-            $("#full-search-results").append("<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().email + "</td><td>" + childSnapshot.val().date + "</td><td><a href=#>see invite</a></td></tr>"); 
-            // these will be the entire children
-            console.log(childSnapshot.val());
+            var uName = childSnapshot.val().name;
+            var uEmail = childSnapshot.val().email;
+            var uDate = childSnapshot.val().date;
+            var uZip = childSnapshot.val().code;
+            var uInvite = childSnapshot.val();
+
+            // Append search results into table form
+            var newRow = $("<tr>").append(
+                $("<td>").text(uName),
+                $("<td>").text(uEmail),
+                $("<td>").text(uDate),
+                $("<td>").text(uZip),
+                $("<td>").append(
+                    $("<a/>", {
+                        "id": "invite-link",
+                        "data-object": JSON.stringify(uInvite),
+                        "href": "render-invite.html",
+                        "target": "_blank",
+                        "text": "see invite"
+                    })
+                )
+            );
+            $("#full-search-results").append(newRow);
         });
+        // Display search term
         $("#search-results-h6").text("Results for: " + interestSearch);
     });
 }
+// Hide the table on page load
 $("#search-table").hide();
-
-
 
 // Click handler for search again buttong
 $("#search-again").on("click", function(){
@@ -555,8 +594,35 @@ $("#search-again").on("click", function(){
     $("#search-table").hide();
 })
 
+// render search invites
+$(document).on("click", "#invite-link", function(){
+    var clickedInviteObject = $(this).attr("data-object")
+    console.log(clickedInviteObject);
+    localStorage.removeItem("userDataGet");
+    console.log(localStorage.getItem("userDataGet"));
+    localStorage.setItem("userDataGet", clickedInviteObject);
+    console.log(JSON.stringify(clickedInviteObject));
+})
+
 // INVITE PAGE ==================================================================
 $("#nextPageToInvite").on("click", function(){
     storeData();
-})
+});
+
+function previewFile(){
+    var preview = document.querySelector('img'); //selects the query named img
+    var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
 }
+
+previewFile();  //calls the function named previewFile()
