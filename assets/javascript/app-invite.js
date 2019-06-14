@@ -15,6 +15,7 @@ function renderInvite() {
         startDelay: 1000
     })
     .type(userNameInvite)
+        .options({speed: 100})
         .pause(1500)
         .type(", will you go out with me?")
         .go();
