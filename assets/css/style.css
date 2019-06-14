@@ -126,7 +126,8 @@ body, html {
 }
 
 .main-content {
-  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 
 /* ALL CARDS ========================================*/
@@ -200,6 +201,7 @@ body, html {
   font-family: 'Marck Script', cursive;
   font-size: 3em;
   color: #F0A30A;
+  padding-bottom: 15px;
 }
 
 .invitationContentText {
@@ -223,10 +225,6 @@ body, html {
   text-align: center;
 }
 
-/* .yes-no-row {
-  background-color: #F0A30A;
-} */
-
 .yes-buttong-invite, .no-button-invite {
   font-family: 'Lato', sans-serif;
   font-size: 1.5em;
@@ -242,6 +240,9 @@ body, html {
   background-color: red;
 }
 
+.external-url {
+  font-size: 1em;
+}
 
 /* SEARCHPAGE STYLES =========================== */
 #search-again {
