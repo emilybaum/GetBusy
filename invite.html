@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Marck+Script&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Marck+Script&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -24,61 +24,72 @@
 </head>
 <body class="invite-page-background">
     <header>
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">Default</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">GetBusy</a>
+    
+                <div class="d-flex  navbar-expand justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="search.html">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- placeholder currnetly - future item to build -->
+                            <!-- <a class="nav-link" href="#">Your Invites</a> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
-    <div>
-        <div class="container mt-3 pt-5 pb-3 bd-amber border-outset invite-border text-center">
+
+    <div class="container mt-3 pt-5 bd-amber border-outset invite-border text-center main-content">
             
-            <div class="row justify-content-center">
-                <div class="text-center col-sm-12">
-                    <h3 class="mb-5 invitationNameText"><span id="invite-line"></span>, will you go out with me?</h3>
+        <div class="row justify-content-center">
+            <div class="text-center col-sm-12">
+                <h3 class="mb-5 invitationNameText"><span id="invite-line"></span></h3>
+            </div>
+        </div>
+<!-- <div class="d-flex align-items-baseline"> -->
+        <div class="row justify-content-around d-flex align-items-baseline">
+            <div class="col-sm-3">
+                <h1 class="text-center invitationContentText">Be inspired</h1>
+                <div class="card card-eb" id="pixabay-display">
+                    <h5 class="invite-card-text">by your interest in <span id="userInterest-invite"></span></h5>
                 </div>
             </div>
 
-            <div class="row justify-content-around">
-                <div class="col-sm-3">
-                    <h1 class="text-center invitationContentText">Be inspired</h1>
-                    <div class="card card-eb" id="pixabay-display">
-                        <h5>by your interest in <span id="userInterest-invite"></span></h5>
-                    </div>
-                    
-                </div>
-
-                <div class="col-sm-3">
-                    <h1 class="text-center invitationContentText">Get a yourself a gift</h1>
-                    <div class="card card-eb" id="etsy-display"></div>
-                </div>
-
-                <div class="col-sm-3">
-                    <h1 class="text-center invitationContentText">Take youself out</h1>
-                    <div class="card card-eb" id="eventbrite-display"></div>
-                </div>
+            <div class="col-sm-3">
+                <h1 class="text-center invitationContentText">Get a yourself a gift</h1>
+                <div class="card card-eb" id="etsy-display"></div>
             </div>
 
-            <div class="row justify-content-between">
-                <div class="col-sm-4 text-center">
-                    <!-- this need to be a button -->
-                    Yes
-                </div>
-                <div class="col-sm-4 text-center">
-                    <!-- this needs to be a button -->
-                    No
-                </div>
+            <div class="col-sm-3">
+                <h1 class="text-center invitationContentText">Take youself out</h1>
+                <div class="card card-eb" id="eventbrite-display"></div>
             </div>
+        </div>
+<!-- </div> -->
 
-            <div class="display-4 text-center getbusy-title animated pulse">
-                GetBusy
-            </div>
+    <div class="row justify-content-around m-2 yes-no-row">
+        <div class="col-sm-4 text-center">
+            <button type="button" class="btn btn-primary m-2 yes-buttong-invite">Yes, I'd love to</button>
+        </div>
+        <div class="col-sm-4 text-center">
+            <button type="button" class="btn btn-primary m-2 no-button-invite">Not this time</button>
+        </div>
+    </div>
+
+    <div class="display-4 text-center getbusy-title animated pulse">
+        GetBusy
+    </div>
             
-        </div> <!-- end container -->
+    </div> <!-- end container -->
 
     
-
-    <footer class="text-center">
-        This is the footer
-    </footer>
 
     <script src="assets/javascript/app.js "></script>
     <script src="assets/javascript/app-invite.js"></script>

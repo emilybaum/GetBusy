@@ -92,7 +92,7 @@ font-family: 'Lato', sans-serif;
 }
 
 .validation {
-  color: red
+  color: ;
 }
 
 body, html {
@@ -133,7 +133,7 @@ body, html {
 /* ALL CARDS ========================================*/
 
 .selection-border {
-  border: 5px solid red;
+  border: 5px solid #F0A30A;
 }
 
 /* ================================================== */
@@ -194,8 +194,7 @@ body, html {
 
 /* INVITATION */
 .invite-page-background {
-  background-color: #F8F9FA;
-  /* background-image: url("../../assets/images/giphy-sparkle.gif"); */
+  background-color: #b37d4e10;
   background-repeat: repeat-x;
 }
 .invitationNameText {
@@ -205,18 +204,14 @@ body, html {
 }
 
 .invitationContentText {
-  font-family: 'Lobster', cursive;
+  font-family: 'Lato', sans-serif;
   font-size: 2em;
-  color: #8C004A;
+  color: #286da8;
 }
 
 .invite-border {
   border: 10px solid;
   background-color: white;
-}
-
-.card-eb {
-
 }
 
 .invite-img {
@@ -228,6 +223,26 @@ body, html {
   font-size: 1em;
   text-align: center;
 }
+
+.yes-no-row {
+  /* background-color: #F0A30A; */
+}
+
+.yes-buttong-invite, .no-button-invite {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+  background-color: #F0A30A;
+  border: none;
+}
+
+.yes-buttong-invite:hover {
+  background-color: green;
+}
+
+.no-button-invite:hover {
+  background-color: red;
+}
+
 
 /* SEARCHPAGE STYLES =========================== */
 #search-again {
