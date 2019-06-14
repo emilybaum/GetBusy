@@ -15,6 +15,15 @@ font-family: 'Lato', sans-serif;
  */
 
 
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  color: #286da8;
+}
+
+.bg-dark {
+    background-color: #286da8!important;
+}
+
 .title {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -66,20 +75,25 @@ font-family: 'Lato', sans-serif;
   background-color: #b37d4e25;
 }
 
-#user-input {
+#guest-input, #return-input, #new-signup {
   width: 70%;
 }
 
-.validation {
-  color: red
+.options {
+  padding-bottom: 2rem;
 }
 
-/* html {
-    background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-} */
+.options-text {
+  font-family: 'Lato', sans-serif;
+}
+
+.index-button {
+  background-color: #286da8;
+}
+
+.validation {
+  color: ;
+}
 
 body, html {
     height: 100%;
@@ -89,8 +103,6 @@ body, html {
 .background {
   /* The image used */
   background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
-  /* background-image: url("../assets/images/giphy-beach.gif"); */
-
 
   /* Full height */
   height: 100%;
@@ -101,27 +113,27 @@ body, html {
   background-size: cover;
 }
 
-/* this will keep the image in the center of the page, but does not fill the whole screen */
-/* body {
-  background-image: url("https://image.freepik.com/free-photo/silhouette-woman-hands-be-heart-shape-sunset-background-love-valentine-s-day-c_53476-266.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; 
-  
-} */
-
+.selection-pages-header {
+  width: 100%;
+  /* height: 1em; */
+  background-color: #b37d4e25; 
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 .title-for-section  {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #438496
 }
 
-
+.main-content {
+  padding-bottom: 3rem;
+}
 
 /* ALL CARDS ========================================*/
 
 .selection-border {
-  border: 5px solid red;
+  border: 5px solid #F0A30A;
 }
 
 /* ================================================== */
@@ -182,8 +194,7 @@ body, html {
 
 /* INVITATION */
 .invite-page-background {
-  background-color: #F8F9FA;
-  /* background-image: url("../../assets/images/giphy-sparkle.gif"); */
+  background-color: #b37d4e10;
   background-repeat: repeat-x;
 }
 .invitationNameText {
@@ -193,18 +204,14 @@ body, html {
 }
 
 .invitationContentText {
-  font-family: 'Lobster', cursive;
+  font-family: 'Lato', sans-serif;
   font-size: 2em;
-  color: #8C004A;
+  color: #286da8;
 }
 
 .invite-border {
   border: 10px solid;
   background-color: white;
-}
-
-.card-eb {
-
 }
 
 .invite-img {
@@ -216,6 +223,26 @@ body, html {
   font-size: 1em;
   text-align: center;
 }
+
+.yes-no-row {
+  /* background-color: #F0A30A; */
+}
+
+.yes-buttong-invite, .no-button-invite {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+  background-color: #F0A30A;
+  border: none;
+}
+
+.yes-buttong-invite:hover {
+  background-color: green;
+}
+
+.no-button-invite:hover {
+  background-color: red;
+}
+
 
 /* SEARCHPAGE STYLES =========================== */
 #search-again {

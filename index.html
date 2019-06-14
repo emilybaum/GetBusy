@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Marck+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@v6/dist/typeit.min.js"></script>
@@ -20,71 +22,125 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Default</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">GetBusy</a>
+               
+                <div class="d-flex justify-content-end navbar-expand" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="search.html">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- placeholder currnetly - future item to build -->
+                            <!-- <a class="nav-link" href="#">Your Invites</a> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-    </header>   
+    </header>
     
-    <div class="jumbotron jumbotron-fluid getbusy-background">
+    <!-- jumbotron for main landing page -->
+    <div id="big-header" class="jumbotron jumbotron-fluid getbusy-background">
         <div class="container">
-            <h1 class="display-4 text-center getbusy-title animated bounceInDown">GetBusy</h1>
+            <h1 class="display-3 text-center getbusy-title animated bounceInDown">GetBusy</h1>
             <p class="lead text-center"><span id="getbusy-subtext"></span></p>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
+
+    <!-- header for selections page -->
+    <div id="small-header" class="selection-pages-header mb-3 d-none">
+        <h1 class="text-center getbusy-title">GetBusy</h1>
+    </div>
+
+
+    <div class="container main-content">
+        <div id="user-input" class="row">
             <div class="col-md-6">
-                <form name="interestForm" id="user-input" class="mx-auto ">
-                    <!-- Name -->
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="userNameInput" id="userName-input" placeholder="Your name">
-                        <small class="validation" id="invalid-input-name" hidden>
-                            Wait, what's your name?
-                        </small>
-                    </div>
-                    
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email-input">Email address</label>
-                        <input type="email" class="form-control" name="emailInput" id="email-input" placeholder="Enter email">
-                        <small class="validation" id="invalid-input-email" hidden>
-                            Please enter a valid email address
-                        </small>
-                    </div>
-                    
-                    <!-- Postal code -->
-                    <div class="form-group">
-                        <label for="postalCode">Postal Code</label>
-                        <input type="number" class="form-control" name="postalCodeInput" id="postalCode-input" placeholder="i.e. 20194">
-                        <small class="validation" id="invalid-input-postalCode" hidden>
-                            You need this to see relevant events in the right area
-                        </small>
-                    </div>
-                    
-                    <!-- Interest -->
-                    <div class="form-group">
-                        <label for="interest">What are you interested in?</label>
-                        <input type="text" class="form-control" name="interestInput" id="interest-input" placeholder="i.e. Knitting">
-                        <small class="validation" id="invalid-input-interest" hidden>
-                            Enter your interest to GetBusy
-                        </small>
-                    </div>
-                    
-                    <button id="TBDforButton" type="submit" class="btn btn-primary">GetBusy!</button>
-                </form>
+                <div class="options">
+                    <h3 class="text-center options-text">Try it out</h3>
+
+                    <form id="guest-input" name="interestForm" class="mx-auto">
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="userNameInput" id="userName-input" placeholder="Your name">
+                            <small class="validation" id="invalid-input-name" hidden>
+                                Wait, what's your name?
+                            </small>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email-input">Email address</label>
+                            <input type="email" class="form-control" name="emailInput" id="email-input" placeholder="Enter email">
+                            <small class="validation" id="invalid-input-email" hidden>
+                                Please enter a valid email address
+                            </small>
+                        </div>
+                        
+                        <!-- Postal code -->
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code</label>
+                            <input type="number" class="form-control" name="postalCodeInput" id="postalCode-input" placeholder="i.e. 20194">
+                            <small class="validation" id="invalid-input-postalCode" hidden>
+                                You need this to see relevant events in the right area
+                            </small>
+                        </div>
+                        
+                        <!-- Interest -->
+                        <div class="form-group">
+                            <label for="interest">What are you interested in?</label>
+                            <input type="text" class="form-control" name="interestInput" id="interest-input" placeholder="i.e. Knitting">
+                            <small class="validation" id="invalid-input-interest" hidden>
+                                Enter your interest to GetBusy
+                            </small>
+                        </div>
+                        <div class="mx-auto text-center">
+                            <button id="TBDforButton" type="submit" class="btn btn-primary index-button mx-auto text-center">GetBusy!</button>
+                        </div>
+                    </form>
+                </div>
             </div> <!-- end column for form -->
 
-            <div class="col-md-6"> <!-- sign in option -->
-            <p class="text-center">Sign in</p>
+        <!-- sign in option -->
+            <div class="col-md-6"> 
+        
+                        <div class="options">
+                            <h3 class="text-center options-text">Welcome back! Sign in</h3>
+                            <form id="return-input"  name="signInsignUpForm" class="mx-auto">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Username</label>
+                                    <input type="email" class="form-control" placeholder="Enter username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                                <div class="mx-auto text-center">
+                                    <!-- place holder for  -->
+                                    <a href="#"><button type="submit" class="btn btn-primary index-button">Sign In</button></a>
+                                </div>
+                            </form>
+                        </div>
 
+                        <div class="options options-text">
+                            <h3 class="text-center pb-2">Are you new here? Sign up</h3>
+                            <div id="new-signup" class="mx-auto text-center">
+                                <a href="registration.html"><button type="submit" class="btn btn-primary index-button">Sign Up</button></a>
+                            </div>
+                        </div>
             </div>
 
         </div> <!-- end row for form -->
 
-        <h1 id="make-selection-Pixabay" class="d-none"><span class="title-for-section">Pick an image that brings you joy</span></h1>
-        <h1 id="make-selection-Etsy" class="d-none"><span class="title-for-section">What gift would you like for yourself?</span></h1>
-        <h1 id="make-selection-Eventbrite" class="d-none"><span class="title-for-section">Click an event you would like to attend!</span></h1>
+        <h1 id="make-selection-Pixabay" class="animated bounceInRight d-none"><span class="title-for-section">Pick an image that brings you joy</span></h1>
+        <h1 id="make-selection-Etsy" class="animated bounceInRight d-none"><span class="title-for-section">What gift would you like for yourself?</span></h1>
+        <h1 id="make-selection-Eventbrite" class="animated bounceInRight d-none"><span class="title-for-section">Click an event you would like to attend!</span></h1>
 
         <div id="TBDforWhere"></div>
         
@@ -101,10 +157,12 @@
         <button id="nextPageToEventbrite" type="submit" class="btn btn-primary d-none">Next to Eventbrite</button>
         <a href="invite.html"><button id="nextPageToInvite" type="submit" class="btn btn-primary d-none">Generate Invite</button></a>
     
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Fixed bottom</a>
-    </nav>
-    </div>
+
+        <small class="pl-2 validation invalid-selection"></small>
+
+
+    
+    </div> <!-- end container -->
 
     
     <script src="assets/javascript/app.js "></script>
