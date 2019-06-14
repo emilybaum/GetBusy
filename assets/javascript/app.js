@@ -396,11 +396,11 @@ new TypeIt('#getbusy-subtext', {
     eventCard = $("<div>");
         eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
         // console.log(arr[i].logo.original.url)
-        eventCard.attr("data-img", 'assets/images/sunset.jpg');
+        eventCard.attr("data-img", 'assets/Images/sunset.jpg');
         eventCard.attr("data-name", 'Plan your own event!');
         eventCard.attr("data-summary", 'No events found in your area. Search again, or select this card and plan your own outing!');
         eventCard.attr("data-url", '#');
-        eventCard.append("<img class ='image-img-eventbrite' src='assets/images/sunset.jpg'</img>");
+        eventCard.append("<img class ='image-img-eventbrite' src='assets/Images/sunset.jpg'</img>");
     eventCardBody = $("<div>")
         eventCardBody.addClass("card-body")
             eventCardLink = $("<a target='_blank'>");
