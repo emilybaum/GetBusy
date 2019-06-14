@@ -468,6 +468,7 @@ function storeData() {
 // Define interest search variables
 var interestSearch;
 var returnedObjects;
+var returnedChildren;
 
 // Create click handler for interest search button
 $("#SearchButton").on("click", function(event) {
@@ -484,29 +485,39 @@ $("#SearchButton").on("click", function(event) {
 var interestSearch
 function getChild() {
     database.ref().orderByChild("interest").equalTo(interestSearch).on('value', function (snapshot) {
-        // snapshot would have list of NODES that satisfies the condition
-        returnedObjects = snapshot
-        console.log(returnedObjects.val())
-        // go through each item found and print out the children
+        // Snapshot returns nodes that that match interest
+        // Loop through each item found and print out the children
         snapshot.forEach(function(childSnapshot) {
-            $("#full-search-results").append("<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().email + "</td><td>" + childSnapshot.val().date + "</td><td><a href=#>see invite</a></td></tr>"); 
-            // these will be the entire children
-            console.log(childSnapshot.val());
+            var uName = childSnapshot.val().name;
+            var uEmail = childSnapshot.val().email;
+            var uDate = childSnapshot.val().date;
+            var uZip = childSnapshot.val().code;
+            var uInvite = childSnapshot.val();
+
+            // Append search results into table form
+            var newRow = $("<tr>").append(
+                $("<td>").text(uName),
+                $("<td>").text(uEmail),
+                $("<td>").text(uDate),
+                $("<td>").text(uZip),
+                $("<td>").append(
+                    $("<a/>", {
+                        "id": "invite-link",
+                        "data-object": JSON.stringify(uInvite),
+                        "href": "render-invite.html",
+                        "target": "_blank",
+                        "text": "see invite"
+                    })
+                )
+            );
+            $("#full-search-results").append(newRow);
         });
+        // Display search term
         $("#search-results-h6").text("Results for: " + interestSearch);
     });
 }
+// Hide the table on page load
 $("#search-table").hide();
-
-// Display search results
-function displaySearchResults() {
-    $("#search-section").hide();
-    $("#search-table").show();
-    console.log(returnedObjects);
-    returnedObjects.forEach(function() {
-        $("#full-search-results").append("<tr><td>" + $(this).name + "</td><td>" + $(this).email + "</td><td>" + $(this).date.toDateString() + "</td><td><a href=#>see invite</a></td></tr>");
-    })
-};
 
 // Click handler for search again buttong
 $("#search-again").on("click", function(){
@@ -516,16 +527,18 @@ $("#search-again").on("click", function(){
     $("#search-table").hide();
 })
 
+// render search invites
+$(document).on("click", "#invite-link", function(){
+    var clickedInviteObject = $(this).attr("data-object")
+    console.log(clickedInviteObject);
+    localStorage.removeItem("userDataGet");
+    console.log(localStorage.getItem("userDataGet"));
+    localStorage.setItem("userDataGet", clickedInviteObject);
+    console.log(JSON.stringify(clickedInviteObject));
+})
+
 // INVITE PAGE ==================================================================
 $("#nextPageToInvite").on("click", function(){
     storeData();
 });
-
-// function renderInvite() {
-// userData = JSON.stringify(localStorage.getItem("userData"));
-// console.log(userData);
-// inviteObject = JSON.stringify(localStorage.getItem("inviteObject"));
-// console.log(inviteObject);
-// $("#invite-line").text(userData.userName + ", will you go out with me?")
-// };
 
