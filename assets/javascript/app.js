@@ -150,7 +150,7 @@ function validateForm() {
         return false;
     }
     if (postalCodeField.length === 5) {
-        $("#invalid-input-postalCode").attr("hidden")
+        $("#invalid-input-postalCode").removeAttr("hidden")
     }
 
     if (interestField === "") {
@@ -260,11 +260,26 @@ function resetPage() {
 // END PIXABAY ==================================================================
 
 
+
+
  
 // START EVENTBRITE ==================================================================
 
 // user clicks Next to trigger Eventbrite
-$("#nextPageToEventbrite").on("click", getDataEventbrite)
+// $("#nextPageToEventbrite").on("click", getDataEventbrite)
+// validation for picking interest and click handler
+$(document).on("click", "#nextPageToEventbrite", validateEtsy)
+
+function validateEtsy() {
+    if (etsySelected === false) {
+        $(".invalid-selection").text("You must make a selection first");
+        return false;
+    }
+    else {
+        $(".invalid-selection").empty();
+        getDataEventbrite();
+    }
+}
 
 $("#showMoreEventbrite").on("click", function (event) {
     displayEvents(newEventArr);
@@ -348,7 +363,21 @@ function getDataEventbrite(){
 
 // START ETSY ==================================================================
 // trigger when the next button has been clicked on the previous page
-$("#nextPageToEtsy").on("click", getDataEtsy)
+// $("#nextPageToEtsy").on("click", getDataEtsy)
+// validation for picking interest and click handler
+$(document).on("click", "#nextPageToEtsy", validatePixabay)
+
+function validatePixabay() {
+    if (pixabaySelected === false) {
+        $(".invalid-selection").text("You must make a selection first");
+        return false;
+    }
+    else {
+        $(".invalid-selection").empty();
+        getDataEtsy();
+    }
+}
+
 
 // click handler for showMoreEtsy button to load more ETSY
 $("#showMoreEtsy").on("click", function (event) {
@@ -446,7 +475,23 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 // INVITE PAGE ==================================================================
-$("#nextPageToInvite").on("click", function(){
+// validation for picking interest and click handler
+$(document).on("click", "#nextPageToInvite", validateEventbrite)
+
+function validateEventbrite() {
+    if (eventbriteSelected === false) {
+        $(".invalid-selection").text("You must make a selection first");
+        return false;
+    }
+    else {
+        $(".invalid-selection").empty();
+        generateInvite();
+    }
+}
+
+// $("#nextPageToInvite").on("click", function(){
+    
+function generateInvite() {
     inviteObject.date = Date();
     inviteObject.pixabay = pixabayPicked;
     inviteObject.etsy = etsyPicked;
@@ -459,7 +504,8 @@ $("#nextPageToInvite").on("click", function(){
         userDataFB: userData,
         invite: inviteObject,
     })
-});
+}
+
 
 // function renderInvite() {
 // userData = JSON.stringify(localStorage.getItem("userData"));
