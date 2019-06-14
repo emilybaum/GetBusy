@@ -511,6 +511,7 @@ new TypeIt('#getbusy-subtext', {
   // $("#nextPageToInvite").on("click", function(){
       
 function generateInvite() {
+<<<<<<< HEAD
 };
 
   function storeData() {
@@ -606,6 +607,107 @@ function generateInvite() {
       storeData();
   });
   
+=======
+}
+function storeData() {
+    inviteObject.date = Date();
+    inviteObject.pixabay = pixabayPicked;
+    inviteObject.etsy = etsyPicked;
+    inviteObject.eventbrite = eventbritePicked,
+    console.log(inviteObject);
+    console.log(userData);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    localStorage.setItem("inviteObject", JSON.stringify(inviteObject));
+    database.ref().push({
+        date: Date(),
+        email: userData.email,
+        name: userData.userName,
+        code: userData.postalCode,
+        interest: userData.interest,
+        pixabay: pixabayPicked,
+        etsy: etsyPicked,
+        eventbrite: eventbritePicked,
+    })
+}
+
+// Define interest search variables
+var interestSearch;
+var returnedObjects;
+var returnedChildren;
+
+// Create click handler for interest search button
+$("#SearchButton").on("click", function(event) {
+    event.preventDefault();
+    interestSearch = $("#interest-search").val().trim();
+    console.log(interestSearch);
+    $("#search-section").hide();
+    $("#search-table").show();
+    getChild();
+    // displaySearchResults();
+});
+
+// Search Database
+var interestSearch
+function getChild() {
+    database.ref().orderByChild("interest").equalTo(interestSearch).on('value', function (snapshot) {
+        // Snapshot returns nodes that that match interest
+        // Loop through each item found and print out the children
+        snapshot.forEach(function(childSnapshot) {
+            var uName = childSnapshot.val().name;
+            var uEmail = childSnapshot.val().email;
+            var uDate = childSnapshot.val().date;
+            var uZip = childSnapshot.val().code;
+            var uInvite = childSnapshot.val();
+
+            // Append search results into table form
+            var newRow = $("<tr>").append(
+                $("<td>").text(uName),
+                $("<td>").text(uEmail),
+                $("<td>").text(uDate),
+                $("<td>").text(uZip),
+                $("<td>").append(
+                    $("<a/>", {
+                        "id": "invite-link",
+                        "data-object": JSON.stringify(uInvite),
+                        "href": "render-invite.html",
+                        "target": "_blank",
+                        "text": "see invite"
+                    })
+                )
+            );
+            $("#full-search-results").append(newRow);
+        });
+        // Display search term
+        $("#search-results-h6").text("Results for: " + interestSearch);
+    });
+}
+// Hide the table on page load
+$("#search-table").hide();
+
+// Click handler for search again buttong
+$("#search-again").on("click", function(){
+    $("#full-search-results").text("");
+    $("#interest-search").val("");
+    $("#search-section").show();
+    $("#search-table").hide();
+})
+
+// render search invites
+$(document).on("click", "#invite-link", function(){
+    var clickedInviteObject = $(this).attr("data-object")
+    console.log(clickedInviteObject);
+    localStorage.removeItem("userDataGet");
+    console.log(localStorage.getItem("userDataGet"));
+    localStorage.setItem("userDataGet", clickedInviteObject);
+    console.log(JSON.stringify(clickedInviteObject));
+})
+
+// INVITE PAGE ==================================================================
+$("#nextPageToInvite").on("click", function(){
+    storeData();
+});
+
+>>>>>>> a91d765429389ecd925d0a3372f9f20406006ff6
 //   function previewFile(){
 //       var preview = document.querySelector('img'); //selects the query named img
 //       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
@@ -622,4 +724,8 @@ function generateInvite() {
 //       }
 //   }
   
+<<<<<<< HEAD
 //   previewFile();  //calls the function named previewFile()
+=======
+//   previewFile();  //calls the function named previewFile()
+>>>>>>> a91d765429389ecd925d0a3372f9f20406006ff6
