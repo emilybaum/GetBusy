@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typeit@v6/dist/typeit.min.js"></script>
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid getbusy-background">
+        <div class="container">
+            <h1 class="display-4 text-center getbusy-title">Get Busy (make a logo?)</h1>
+            <p class="lead text-center"><span id="getbusy-subtext"></span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-default">
+                <div class="card-header"><strong>New Member Sign-Up</strong></div>
+                <div class="card-body">
+                <form role="form">
+                    <div class="form-group row">
+                      <label for="name-input">Name:</label>
+                      <input class="form-control" id="name-input" type="text">
+                    </div>
+                    <div class="form-group row">
+                      <label for="email-input">Email:</label>
+                      <input class="form-control" id="email-input" type="email">
+                    </div>
+                    <div class="form-group row">
+                       <label for="userName-input">Choose a User Name:</label>
+                       <input class="form-control" id="userName-input" type="text">
+                    </div>
+                    <div class="form-group row">
+                      <label for="pasword-input">Password:</label>
+                      <input class="form-control" id="password-input" type="password">
+                    </div>
+                    <div class="form-group row">
+                      <label for="birthday-input">Birthday</label>
+                      <input class="form-control" id="birthday-input" type="date">
+                    </div>
+                    <div class="form-group row">
+                      <label for="phoneNumber-input">Phone Number</label>
+                      <input class="form-control" id="phoneNumber-input" type="number" placeholder="(XXX)XXX-XXXX">
+                    </div>
+                    <div>
+                    <input type="file" onchange="previewFile()"><br>
+                    <img src="" height="200">
+                    </div>
+                    <button id="TBDforButton" type="submit" class="btn btn-primary">Register</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card card-default">
+                <div class="card-header">
+                  <strong>Member Login</strong>
+                </div>
+                <div class="card-body">
+                <form role="form">
+                <div class="form-group row">
+                    <label for="userName-input">User Name:</label>
+                    <input class="form-control" id="userName-input" type="text">
+                </div>
+                <div class="form-group row">
+                    <label for="password-input">Password:</label>
+                    <input class="form-control" id="password-input" type="password">
+                  </div>
+                <button id="TBDforButton" type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+      </div>
+      <h1 id="name-input"></h1>
+    <script src="assets/javascript/app.js "></script>
+</body>
+</html>
