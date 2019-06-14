@@ -264,9 +264,7 @@ function resetPage() {
 
  
 // START EVENTBRITE ==================================================================
-
 // user clicks Next to trigger Eventbrite
-// $("#nextPageToEventbrite").on("click", getDataEventbrite)
 // validation for picking interest and click handler
 $(document).on("click", "#nextPageToEventbrite", validateEtsy)
 
@@ -363,7 +361,6 @@ function getDataEventbrite(){
 
 // START ETSY ==================================================================
 // trigger when the next button has been clicked on the previous page
-// $("#nextPageToEtsy").on("click", getDataEtsy)
 // validation for picking interest and click handler
 $(document).on("click", "#nextPageToEtsy", validatePixabay)
 
@@ -505,13 +502,4 @@ function generateInvite() {
         invite: inviteObject,
     })
 }
-
-
-// function renderInvite() {
-// userData = JSON.stringify(localStorage.getItem("userData"));
-// console.log(userData);
-// inviteObject = JSON.stringify(localStorage.getItem("inviteObject"));
-// console.log(inviteObject);
-// $("#invite-line").text(userData.userName + ", will you go out with me?")
-// };
 
