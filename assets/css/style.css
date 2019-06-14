@@ -3,7 +3,6 @@
 #cd5360 #d56 "indian red" hsl(353,54,56) rgb(205,83,96)
 #b37d4e #b85 "peru" hsl(27,39,50) rgb(179,125,78)
 #438496 #489 "other blue" hsl(193,38,42) rgb(67,132,150)
-
 #F8F9FA -- lightest gray
 #E4E4E4 -- light gray
 */
@@ -91,9 +90,9 @@ font-family: 'Lato', sans-serif;
   background-color: #286da8;
 }
 
-.validation {
+/* .validation {
   color: ;
-}
+} */
 
 body, html {
     height: 100%;
@@ -162,14 +161,14 @@ body, html {
 }
 
 /* text contnet of the card */
-.body-card-etsy {
-  /* not sure if we need this */
-}
+/* .body-card-etsy {
+  not sure if we need this
+} */
 
 /* title of the etsy card */
-.title-card-etsy {
-  /* not sure if we need this */
-}
+/* .title-card-etsy {
+  not sure if we need this
+} */
 
 /* price of the etsy item */
 .price-card-etsy {
@@ -224,9 +223,9 @@ body, html {
   text-align: center;
 }
 
-.yes-no-row {
-  /* background-color: #F0A30A; */
-}
+/* .yes-no-row {
+  background-color: #F0A30A;
+} */
 
 .yes-buttong-invite, .no-button-invite {
   font-family: 'Lato', sans-serif;
