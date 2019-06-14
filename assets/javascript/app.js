@@ -173,6 +173,8 @@ function collectUserData() {
     userData.interest = $("#interest-input").val().trim()
     console.log(userData)
     getDataPixabay(userData)
+    $("#big-header").addClass("d-none")
+    $("#small-header").removeClass("d-none")
     $("#showMorePixabay").removeClass("d-none")
     $("#user-input").addClass("d-none")
 }

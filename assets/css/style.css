@@ -83,6 +83,10 @@ font-family: 'Lato', sans-serif;
   padding-bottom: 2rem;
 }
 
+.options-text {
+  font-family: 'Lato', sans-serif;
+}
+
 .index-button {
   background-color: #286da8;
 }
@@ -109,13 +113,22 @@ body, html {
   background-size: cover;
 }
 
+.selection-pages-header {
+  width: 100%;
+  /* height: 1em; */
+  background-color: #b37d4e25; 
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 .title-for-section  {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #438496
 }
 
-
+.main-content {
+  padding-bottom: 3rem;
+}
 
 /* ALL CARDS ========================================*/
 
