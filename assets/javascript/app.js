@@ -270,6 +270,21 @@ $("#showMoreEventbrite").on("click", function (event) {
     displayEvents(newEventArr);
 })
 
+function getNiceDate(string) {
+    var year = string.slice(0, 4);
+    var month = string.slice(5, 7);
+    var day = string.slice(8, 10);
+    var timeHour = string.slice(11, 13)
+    var timeMin = string.slice(14, 16);
+    var time;
+    if (timeHour > 12) {
+        time = (timeHour - 12) + ":" + timeMin + "pm";
+    } else {
+        time = timeHour + ":" + timeMin + "am";
+    };
+    return (month + "/" + day + "/" + year + " at " + time);
+}
+
 // function parse JSON object and append to page
 var newEventArr = [];
 function displayEvents(arr) {
@@ -299,8 +314,13 @@ function displayEvents(arr) {
             eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + "</img>");
         eventCardBody = $("<div>")
             eventCardBody.addClass("card-body")
-            eventCardBody.append("<h5>" + arr[i].name.html + "</h5>");
+                eventCardLink = $("<a target='_blank'>");
+                    eventCardLink.attr("href", arr[i].url);
+                        eventCardTitle = $("<h5>" + arr[i].name.html + "</h5>");
+                    eventCardLink.append(eventCardTitle);
+                eventCardBody.append(eventCardLink);
             eventCardBody.append("<p>" + arr[i].summary + "</p>");
+            eventCardBody.append("<h6 class='date-card-eventbrite'>When: " + getNiceDate(arr[i].start.local));
         eventCard.append(eventCardBody);
         eventCol.append(eventCard)
         eventRow.append(eventCol);
