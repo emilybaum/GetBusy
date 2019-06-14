@@ -97,9 +97,9 @@ font-family: 'Lato', sans-serif;
   background-color: #286da8;
 }
 
-/* .validation {
-  color: ;
-} */
+.validation {
+  color: red;
+}
 
 body, html {
     height: 100%;
@@ -168,16 +168,6 @@ body, html {
   width: 100%;
 }
 
-/* text contnet of the card */
-/* .body-card-etsy {
-  not sure if we need this
-} */
-
-/* title of the etsy card */
-/* .title-card-etsy {
-  not sure if we need this
-} */
-
 /* price of the etsy item */
 .price-card-etsy {
   color: #b37d4e;
@@ -202,7 +192,6 @@ body, html {
 /* INVITATION */
 .invite-page-background {
   background-color: #b37d4e10;
-  background-repeat: repeat-x;
 }
 .invitationNameText {
   font-family: 'Lobster', cursive;
@@ -217,8 +206,7 @@ body, html {
 }
 
 .invite-border {
-  border: 10px solid;
-  /* background-color: white; */
+  border: 10px outset #F0A30A;
   background-image: radial-gradient(#ffffff, #ffffff, #b37d4e25, #F0A30A75);
   width: 80%;
 }
