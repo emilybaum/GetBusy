@@ -556,13 +556,5 @@ $("#search-again").on("click", function(){
 // INVITE PAGE ==================================================================
 $("#nextPageToInvite").on("click", function(){
     storeData();
-});
-
-// function renderInvite() {
-// userData = JSON.stringify(localStorage.getItem("userData"));
-// console.log(userData);
-// inviteObject = JSON.stringify(localStorage.getItem("inviteObject"));
-// console.log(inviteObject);
-// $("#invite-line").text(userData.userName + ", will you go out with me?")
-// };
-
+})
+}
