@@ -17,7 +17,11 @@ font-family: 'Lato', sans-serif;
 .navbar-brand {
   font-family: 'Lobster', cursive;
   color: #286da8;
+}
 
+#navbarNav2 {
+  position: absolute;
+  right: 0;
 }
 
 .tagline {

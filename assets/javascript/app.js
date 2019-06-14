@@ -238,7 +238,7 @@ new TypeIt('#getbusy-subtext', {
       }
       arr.splice(0, 4);
       
-      if (arr.length < 4) {
+      if (arr.length < 1) {
           var btn = document.getElementById("showMorePixabay"); 
           btn.disabled = true;
       }
@@ -315,43 +315,107 @@ new TypeIt('#getbusy-subtext', {
   
       eventContainer = $("#TBDforWhere");
           eventRow = $("<div class='row'>");
-  
-      for (i = 0; i < 4; i++) {
-          eventCol = $("<div class='col-md mb-3'>");
-          eventCard = $("<div>");
-              eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
-              console.log(arr)
-              // console.log(arr[i].logo.original.url)
-              eventCard.attr("data-img", arr[i].logo.original.url);
-              eventCard.attr("data-name", arr[i].name.html);
-              eventCard.attr("data-summary", arr[i].summary);
-              eventCard.attr("data-url", arr[i].url);
-              eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + "</img>");
-          eventCardBody = $("<div>")
-              eventCardBody.addClass("card-body")
-                  eventCardLink = $("<a target='_blank'>");
-                      eventCardLink.attr("href", arr[i].url);
-                          eventCardTitle = $("<h5>" + arr[i].name.html + "</h5>");
-                      eventCardLink.append(eventCardTitle);
-                  eventCardBody.append(eventCardLink);
-              eventCardBody.append("<p>" + arr[i].summary + "</p>");
-              eventCardBody.append("<h6 class='date-card-eventbrite'>When: " + getNiceDate(arr[i].start.local));
-          eventCard.append(eventCardBody);
-          eventCol.append(eventCard)
-          eventRow.append(eventCol);
-      };
-      eventContainer.append(eventRow);
-      arr.splice(0,4);
-      
-      if (arr.length < 4) {
-          var btn = document.getElementById("showMorePixabay"); 
-          btn.disabled = true;
+      if (arr.length > 3) {
+        for (i = 0; i < 4; i++) {
+            eventCol = $("<div class='col-md mb-3'>");
+            eventCard = $("<div>");
+                eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
+                console.log(arr)
+                // console.log(arr[i].logo.original.url)
+                eventCard.attr("data-img", arr[i].logo.original.url);
+                eventCard.attr("data-name", arr[i].name.html);
+                eventCard.attr("data-summary", arr[i].summary);
+                eventCard.attr("data-url", arr[i].url);
+                eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + "</img>");
+            eventCardBody = $("<div>")
+                eventCardBody.addClass("card-body")
+                    eventCardLink = $("<a target='_blank'>");
+                        eventCardLink.attr("href", arr[i].url);
+                            eventCardTitle = $("<h5>" + arr[i].name.html + "</h5>");
+                        eventCardLink.append(eventCardTitle);
+                    eventCardBody.append(eventCardLink);
+                eventCardBody.append("<p>" + arr[i].summary + "</p>");
+                eventCardBody.append("<h6 class='date-card-eventbrite'>When: " + getNiceDate(arr[i].start.local));
+            eventCard.append(eventCardBody);
+            eventCol.append(eventCard)
+            eventRow.append(eventCol);
+        };
+        eventContainer.append(eventRow);
+        arr.splice(0,4);
+
+        newEventArr = arr;
+        console.log(newEventArr);
+      } else if (arr.length < 4 && arr.length > 0) {
+        for (i = 0; i < arr.length; i++) {
+            eventCol = $("<div class='col-md mb-3'>");
+            eventCard = $("<div>");
+                eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
+                console.log(arr)
+                // console.log(arr[i].logo.original.url)
+                eventCard.attr("data-img", arr[i].logo.original.url);
+                eventCard.attr("data-name", arr[i].name.html);
+                eventCard.attr("data-summary", arr[i].summary);
+                eventCard.attr("data-url", arr[i].url);
+                eventCard.append("<img class ='image-img-eventbrite' src=" + arr[i].logo.original.url + "</img>");
+            eventCardBody = $("<div>")
+                eventCardBody.addClass("card-body")
+                    eventCardLink = $("<a target='_blank'>");
+                        eventCardLink.attr("href", arr[i].url);
+                            eventCardTitle = $("<h5>" + arr[i].name.html + "</h5>");
+                        eventCardLink.append(eventCardTitle);
+                    eventCardBody.append(eventCardLink);
+                eventCardBody.append("<p>" + arr[i].summary + "</p>");
+                eventCardBody.append("<h6 class='date-card-eventbrite'>When: " + getNiceDate(arr[i].start.local));
+            eventCard.append(eventCardBody);
+            eventCol.append(eventCard)
+            eventRow.append(eventCol);
+        };
+        eventContainer.append(eventRow);
+        arr.splice(0,4);
+
+        newEventArr = arr;
+        console.log(newEventArr);
+      } else {
+        var btn = document.getElementById("showMoreEventbrite"); 
+        btn.disabled = true;
       }
-  
-      newEventArr = arr;
-      console.log(newEventArr);
   };
   
+  function displayMakeEvent () {
+    // display the show more events button
+    $("#showMoreEventbrite").removeClass("d-none")
+    $("#showMoreEtsy").addClass("d-none")
+
+    // showing the next page button and removing the currnet page button
+    $("#nextPageToInvite").removeClass("d-none");
+    $("#nextPageToEventbrite").addClass("d-none");
+
+    eventContainer = $("#TBDforWhere");
+        eventRow = $("<div class='row'>");
+    eventCol = $("<div class='col-md mb-3'>");
+    eventCard = $("<div>");
+        eventCard.addClass("card-img-top eventbritePicked image-card-eventbrite");
+        // console.log(arr[i].logo.original.url)
+        eventCard.attr("data-img", 'assets/images/sunset.jpg');
+        eventCard.attr("data-name", 'Plan your own event!');
+        eventCard.attr("data-summary", 'No events found in your area. Search again, or select this card and plan your own outing!');
+        eventCard.attr("data-url", '#');
+        eventCard.append("<img class ='image-img-eventbrite' src='assets/images/sunset.jpg'</img>");
+    eventCardBody = $("<div>")
+        eventCardBody.addClass("card-body")
+            eventCardLink = $("<a target='_blank'>");
+                eventCardLink.attr("href", '#');
+                    eventCardTitle = $("<h5>" + 'Plan your own event!' + "</h5>");
+                eventCardLink.append(eventCardTitle);
+            eventCardBody.append(eventCardLink);
+        eventCardBody.append("<p>" + 'No events found in your area. Search again, or select this card and plan your own outing!'+ "</p>");
+        // eventCardBody.append("<h6 class='date-card-eventbrite'>When: " + getNiceDate(arr[i].start.local));
+    eventCard.append(eventCardBody);
+    eventCol.append(eventCard)
+    eventRow.append(eventCol);
+    eventContainer.append(eventRow);
+};
+
   // ajax function for EVENTBRITE
   function getDataEventbrite(){
       // empty the contents of the container
@@ -364,8 +428,9 @@ new TypeIt('#getbusy-subtext', {
       var privateAPIKey = "Q2VRCE5ZUCJTZ5IFWVHG";
       var searchTerm = userData.interest;
       var sort = "date"
-      var address = "10011"
-      var distance = 5 + "mi"
+      var address = userData.postalCode;
+      console.log(userData.postalCode);
+      var distance = 20 + "mi"
       var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&sort_by=" + sort + "&location.address="+ address + "&location.within=" + distance + "&token=Q2VRCE5ZUCJTZ5IFWVHG"
   
       $.ajax({
@@ -375,7 +440,11 @@ new TypeIt('#getbusy-subtext', {
           console.log(response);
           newEventArr = response.events;
           console.log(newEventArr);
+          if (newEventArr.length === 0) {
+              displayMakeEvent()
+          } else {
           displayEvents(newEventArr);
+          }
       });
   }
   // END EVENTBRITE ==================================================================
@@ -416,7 +485,7 @@ new TypeIt('#getbusy-subtext', {
       $("#nextPageToEventbrite").removeClass("d-none");
       $("#nextPageToEtsy").addClass("d-none");
       
-  
+      if (arr.length > 3) {
       // creating the holder for Etsy content
       imageContainer = $("#TBDforWhere");
       imageRow = $("<div class='row'>");
@@ -443,7 +512,40 @@ new TypeIt('#getbusy-subtext', {
       }
       imageContainer.append(imageRow);
       arr.splice(0,4);
+      
       newEtsyArr = arr;
+    } else if (arr.length < 4 && arr.length > 0) {
+        imageContainer = $("#TBDforWhere");
+      imageRow = $("<div class='row'>");
+      for (i = 0; i < 4; i++) {
+          imageCol = $("<div class='col-md mb-3'>");
+          imageCard = $("<div>")
+              imageCard.addClass("card-img-top image-card-etsy etsyPicked");
+              imageCard.attr("data-img", JSON.stringify(arr[i].Images[0].url_fullxfull));
+              imageCard.attr("data-url", arr[i].url);
+              imageCard.attr("data-price", arr[i].price);
+              imageCard.attr("data-title", arr[i].title);
+              imageCard.append("<img class ='image-img-etsy' src=" + JSON.stringify(arr[i].Images[0].url_fullxfull) + ">");
+          imageCardBody = $("<div class='body-card-etsy'>");
+              imageCardBody.addClass("card-body");
+                  imageCardLink = $("<a target='_blank'>");
+                      imageCardLink.attr("href", arr[i].url);
+                          imageCardTitle = $("<h5 class='title-card-etsy'>" + arr[i].title + "</h5>")
+                      imageCardLink.append(imageCardTitle);
+              imageCardBody.append(imageCardLink);
+              imageCardBody.append("<h6 class='price-card-etsy'>" + "$" + arr[i].price + "</h6>");
+          imageCard.append(imageCardBody);
+          imageCol.append(imageCard); 
+          imageRow.append(imageCol);
+      }
+      imageContainer.append(imageRow);
+      arr.splice(0,arr.length);
+      
+      newEtsyArr = arr;
+    } else {
+        var btn = document.getElementById("showMoreEtsy"); 
+          btn.disabled = true;
+    }
       // console.log(newEtsyArr);
   }
   
@@ -511,103 +613,6 @@ new TypeIt('#getbusy-subtext', {
   // $("#nextPageToInvite").on("click", function(){
       
 function generateInvite() {
-<<<<<<< HEAD
-};
-
-  function storeData() {
-      inviteObject.date = Date();
-      inviteObject.pixabay = pixabayPicked;
-      inviteObject.etsy = etsyPicked;
-      inviteObject.eventbrite = eventbritePicked,
-      console.log(inviteObject);
-      console.log(userData);
-      localStorage.setItem("userData", JSON.stringify(userData));
-      localStorage.setItem("inviteObject", JSON.stringify(inviteObject));
-      database.ref().push({
-          date: Date(),
-          email: userData.email,
-          name: userData.userName,
-          code: userData.postalCode,
-          interest: userData.interest,
-          pixabay: pixabayPicked,
-          etsy: etsyPicked,
-          eventbrite: eventbritePicked,
-      })
-  }
-
-  // Create click handler for interest search button
-  $("#SearchButton").on("click", function(event) {
-      event.preventDefault();
-      interestSearch = $("#interest-search").val().trim();
-      console.log(interestSearch);
-      $("#search-section").hide();
-      $("#search-table").show();
-      getChild();
-      // displaySearchResults();
-  });
-  
-  // Search Database
-  var interestSearch
-  function getChild() {
-      database.ref().orderByChild("interest").equalTo(interestSearch).on('value', function (snapshot) {
-          // Snapshot returns nodes that that match interest
-          // Loop through each item found and print out the children
-          snapshot.forEach(function(childSnapshot) {
-              var uName = childSnapshot.val().name;
-              var uEmail = childSnapshot.val().email;
-              var uDate = childSnapshot.val().date;
-              var uZip = childSnapshot.val().code;
-              var uInvite = childSnapshot.val();
-  
-              // Append search results into table form
-              var newRow = $("<tr>").append(
-                  $("<td>").text(uName),
-                  $("<td>").text(uEmail),
-                  $("<td>").text(uDate),
-                  $("<td>").text(uZip),
-                  $("<td>").append(
-                      $("<a/>", {
-                          "id": "invite-link",
-                          "data-object": JSON.stringify(uInvite),
-                          "href": "render-invite.html",
-                          "target": "_blank",
-                          "text": "see invite"
-                      })
-                  )
-              );
-              $("#full-search-results").append(newRow);
-          });
-          // Display search term
-          $("#search-results-h6").text("Results for: " + interestSearch);
-      });
-  }
-  // Hide the table on page load
-  $("#search-table").hide();
-  
-  // Click handler for search again buttong
-  $("#search-again").on("click", function(){
-      $("#full-search-results").text("");
-      $("#interest-search").val("");
-      $("#search-section").show();
-      $("#search-table").hide();
-  })
-  
-  // render search invites
-  $(document).on("click", "#invite-link", function(){
-      var clickedInviteObject = $(this).attr("data-object")
-      console.log(clickedInviteObject);
-      localStorage.removeItem("userDataGet");
-      console.log(localStorage.getItem("userDataGet"));
-      localStorage.setItem("userDataGet", clickedInviteObject);
-      console.log(JSON.stringify(clickedInviteObject));
-  })
-  
-  // INVITE PAGE ==================================================================
-  $("#nextPageToInvite").on("click", function(){
-      storeData();
-  });
-  
-=======
 }
 function storeData() {
     inviteObject.date = Date();
@@ -707,7 +712,6 @@ $("#nextPageToInvite").on("click", function(){
     storeData();
 });
 
->>>>>>> a91d765429389ecd925d0a3372f9f20406006ff6
 //   function previewFile(){
 //       var preview = document.querySelector('img'); //selects the query named img
 //       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
@@ -724,8 +728,4 @@ $("#nextPageToInvite").on("click", function(){
 //       }
 //   }
   
-<<<<<<< HEAD
 //   previewFile();  //calls the function named previewFile()
-=======
-//   previewFile();  //calls the function named previewFile()
->>>>>>> a91d765429389ecd925d0a3372f9f20406006ff6
