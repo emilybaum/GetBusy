@@ -40,4 +40,4 @@ IV) Used CSS and JavaScript libraries to add animations and improve design:
     2) CloudFlare library used to create animated page title
 
 #### Functionality
-![Screenshot of Game](assets/images/screenshotvideo.gif)
+![Screenshot of Game](assets/Images/screenshotvideo.gif)
